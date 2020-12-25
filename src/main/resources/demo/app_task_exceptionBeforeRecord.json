@@ -1,0 +1,46 @@
+{
+	
+    "taskId": "12345",
+    	
+    "exceptionId": "adaf",
+    	
+    "taskStatus": "2",
+    	
+    "machineName": "螺杆空气压缩机",
+    	
+    "machineNo": "1",
+    	
+    "excetionDetail": {
+            		
+            "chickUserName": "小王",
+            		
+            "chickUserCode": "14545",
+            		
+            "chickDate": "2020-06-28 10:20:22",
+            		
+            "imItemName": "项目1",
+            		
+            "imExceptionDesc": "描述异常描述异常描述异常描述",
+            		
+            "imUrls": "http://jkljjl/adf.jsp,http://jkljjl/adf.jsp,http://jkljjl/adf.jsp"
+    	},
+    	
+    "exceptionHandle": {
+            		
+            "handlerUserName": "小张",
+            		
+            "handlerUserCode": "554545",
+            		
+            "handlerDesc": "处理内让描述处理内让描述处理内让描述处理内让描述处理内让描述",
+            "handlerImgs": "http://jkljjl/adf.jsp,http://jkljjl/adf.jsp,http://jkljjl/adf.jsp"
+    	},
+	"rejectfFeedback": {
+        		
+        "rejectUserName": "小张",
+        		
+        "rejectUserCode": "554545",
+        		
+        "rejectReason": "处理内让描述处理内让描述处理内让描述处理内让描述处理内让描述"
+	}
+
+}

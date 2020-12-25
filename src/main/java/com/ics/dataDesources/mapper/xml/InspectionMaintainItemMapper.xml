@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ics.dataDesources.mapper.InspectionMaintainItemMapper">
+
+    <delete id="deleteByTemplateId" parameterType="string">
+        delete from inspection_maintain_item where template_id = #{templateId,jdbcType=VARCHAR}
+    </delete>
+    <update id="updateStatusByTemplateId" parameterType="string">
+        update inspection_maintain_item set is_available = 0
+        where is_available = 1 and template_id = #{templateId, jdbcType=VARCHAR}
+    </update>
+</mapper>

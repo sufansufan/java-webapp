@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ics.system.mapper.SysUserMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.ics.system.model.SysUser">
+		<id column="id" property="id" />
+		<result column="user_code" property="userCode" />
+		<result column="user_name" property="userName" />
+		<result column="user_password" property="userPassword" />
+		<result column="terminal_user_password" property="terminalUserPassword" />
+		<result column="id_card" property="idCard" />
+		<result column="sex" property="sex" />
+		<result column="telephone" property="telephone" />
+		<result column="cellphone" property="cellphone" />
+		<result column="photo_path" property="photoPath" />
+		<result column="status" property="status" />
+		<result column="remark" property="remark" />
+		<result column="org_id" property="orgId" />
+		<result column="org_id_path" property="orgIdPath" />
+		<result column="role_id" property="roleId" />
+		<result column="identity_idx" property="identityIdx" />
+		<result column="identity_name" property="identityName" />
+		<result column="title_name" property="titleName" />
+		<result column="rank_name" property="rankName" />
+		<result column="reg_from" property="regFrom" />
+		<result column="create_time" property="createTime" />
+		<result column="modify_time" property="modifyTime" />
+	</resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, user_code AS userCode, user_name AS userName, user_password AS userPassword, terminal_user_password AS terminalUserPassword, id_card AS idCard, sex, telephone, cellphone, photo_path AS photoPath, status, remark, org_id AS orgId, org_id_path AS orgIdPath, role_id AS roleId, identity_idx AS identityIdx, identity_name AS identityName, title_name AS titleName, rank_name AS rankName, reg_from AS regFrom, bc.deadline AS deadline,create_time AS createTime, modify_time AS modifyTime
+    </sql>
+
+
+	<select id="selectIdentityList" resultType="com.ics.system.model.SysUser">
+	
+		SELECT
+        	bc.id, user_code AS userCode, user_name AS userName, user_password AS userPassword, terminal_user_password AS terminalUserPassword, id_card AS idCard, sex, telephone, cellphone, photo_path AS photoPath, status, remark, org_id AS orgId, org_id_path AS orgIdPath, role_id AS roleId, bc.identity_idx AS identityIdx, bc.identity_name AS identityName, title_name AS titleName, rank_name AS rankName, bc.deadline AS deadline,bc.create_time AS createTime, bc.modify_time AS modifyTime
+			 ,bct.identity_image AS identityImage
+		from
+			sys_user bc LEFT JOIN sys_user_identity bct ON bc.identity_idx=bct.identity_idx
+		WHERE 1=1
+		${ew.sqlSegment}
+			
+	</select>
+	<select id="selectRelationList" resultType="com.ics.system.model.SysUser">
+	
+<!-- 		SELECT -->
+<!--         	bc.id, user_code AS userCode, user_name AS userName, user_password AS userPassword, terminal_user_password AS terminalUserPassword, id_card AS idCard, sex, telephone, cellphone, photo_path AS photoPath, status, remark, org_id AS orgId, org_id_path AS orgIdPath, role_id AS roleId, bc.identity_idx AS identityIdx, bc.identity_name AS identityName, title_name AS titleName, rank_name AS rankName,bc.deadline AS deadline, bc.create_time AS createTime, bc.modify_time AS modifyTime -->
+<!-- 			 ,bct.identity_image AS identityImage -->
+<!-- 		FROM -->
+<!-- 			sys_user bc LEFT JOIN sys_user_identity bct ON bc.identity_idx=bct.identity_idx -->
+<!-- 		WHERE 1=1 -->
+<!-- 		${ew.sqlSegment} -->
+		
+			SELECT
+        	bc.id, bc.user_code AS userCode, bc.user_name AS userName, bc.user_password AS userPassword, bc.terminal_user_password AS terminalUserPassword, bc.id_card AS idCard, bc.sex, bc.telephone, bc.cellphone, bc.photo_path AS photoPath, bc.status,bc.remark, bc.org_id AS orgId, bc.org_id_path AS orgIdPath, bc.role_id AS roleId, bc.identity_idx AS identityIdx, bc.identity_name AS identityName, bc.title_name AS titleName, bc.rank_name AS rankName, bc.deadline AS deadline,bc.create_time AS createTime, bc.modify_time AS modifyTime
+			 ,sr.role_name AS roleName
+		FROM
+			sys_user bc 
+			LEFT JOIN sys_role sr on bc.role_id=sr.id
+		WHERE 1=1
+		${ew.sqlSegment}
+			
+	</select>
+
+	<select id="selectRelationById" resultType="com.ics.system.model.SysUser"  parameterType="java.lang.String">
+	 	SELECT
+        	bc.id, bc.user_code AS userCode, bc.user_name AS userName, bc.user_password AS userPassword,
+        	bc.terminal_user_password AS terminalUserPassword, bc.id_card AS idCard, bc.sex, bc.telephone,
+        	bc.cellphone, bc.photo_path AS photoPath, bc.status,bc.remark, bc.org_id AS orgId,
+        	 bc.org_id_path AS orgIdPath, bc.role_id AS roleId, bc.identity_idx AS identityIdx,
+        	 bc.identity_name AS identityName, bc.title_name AS titleName,
+        	  bc.rank_name AS rankName, bc.deadline AS deadline,bc.create_time AS createTime,
+        	   bc.modify_time AS modifyTime,bc.email AS email,bc.enterprise_wechat AS enterpriseWechat
+			 ,sr.role_name AS roleName
+		FROM
+			sys_user bc 
+			LEFT JOIN sys_role sr on bc.role_id=sr.id
+		WHERE bc.id = #{id,jdbcType=CHAR}
+	</select>
+	<select id="selectOrgRelationById" resultType="com.ics.system.model.SysUser">
+		SELECT
+        	bc.id, user_code AS userCode, user_name AS userName, user_password AS userPassword, terminal_user_password AS terminalUserPassword, id_card AS idCard, sex, telephone, cellphone, photo_path AS photoPath, status,bc.remark, org_id AS orgId, bc.org_id_path AS orgIdPath, role_id AS roleId, bc.identity_idx AS identityIdx, bc.identity_name AS identityName, title_name AS titleName, rank_name AS rankName, bc.deadline AS deadline,bc.create_time AS createTime, bc.modify_time AS modifyTime
+			 ,bct.org_name AS orgName
+		FROM
+			sys_user bc LEFT JOIN sys_org bct ON bc.org_id=bct.id
+		WHERE 1=1
+		${ew.sqlSegment}
+	</select>
+
+	<select id="selectTeamUserByRoleName" resultType="com.ics.system.model.SysUser">
+		select t2.id, t2.user_name as userName, t3.org_name as orgName, t1.role_name as roleName,t2.cellphone from sys_role t1
+		left join sys_user t2 on t1.id = t2.role_id
+		LEFT JOIN sys_org t3 on t2.org_id = t3.id
+		where (t1.role_name = '班组组长' or t1.role_name='班组组员')
+		and t2.id not in (select user_id from sys_team_member)
+		${ew.sqlSegment}
+	</select>
+</mapper>

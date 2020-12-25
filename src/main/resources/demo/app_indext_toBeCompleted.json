@@ -1,0 +1,45 @@
+{
+  "date": "2020-09-30",
+  "details": [
+    {
+      "orgName": "XXX管理部门",
+      "teamName": "保养一组",
+      "orgCode": "001",
+      "teamCode": "002",
+      "detail": [
+        {
+          "typeCode": "D",
+          "typeName": "日常点检",
+          "totalCount": 63,
+          "completedCount": 31,
+          "toBeComplete": 31,
+          "toBeConfirm": 31
+        },
+        {
+          "type": "R",
+          "typeName": "定期点检",
+          "totalCount": 63,
+          "completedCount": 31,
+          "toBeComplete": 61,
+          "toBeConfirm": 31
+        },
+        {
+          "type": "M",
+          "typeName": "保养",
+          "totalCount": 63,
+          "completedCount": 31,
+          "toBeComplete": 31,
+          "toBeConfirm": 31
+        },
+        {
+          "type": "E",
+          "typeName": "异常",
+          "totalCount": 63,
+          "completedCount": 31,
+          "toBeComplete": 31,
+          "toBeConfirm": 31
+        }
+      ]
+    }
+  ]
+}

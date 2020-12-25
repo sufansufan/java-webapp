@@ -1,0 +1,237 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    font-family: "微软雅黑";
+}
+body,html{
+    height: 100%;
+}
+body{
+/*     background-image: url("../../css/images/login/register1920x1080.jpg"); */
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    background-color: rgb(235,235,235)
+}
+.left{
+    float: left;
+}
+.right{
+    float: right;
+}
+.safe{
+    width: 622px;
+    height: 514px;
+    margin: 0 auto;
+    /*background: red;*/
+}
+.zhlq_bg_cs{
+/*     background-image: url("../../css/images/langqi/zhlq_bga.png"); */
+/*     background-repeat: no-repeat; */
+/*     background-size: cover; */
+    width: 1394px;
+    height: 240px;
+    left: 50%;
+    margin-left: -697px;
+    position: relative;
+    top: 100px;
+    z-index: -1 ;
+    opacity: 0.12;
+}
+.zhlq_bg_a{
+    background-image: url("../../css/images/langqi/zhlq_bg02.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width:1920px;
+    height: 398px;
+    margin-top: -10px;
+    left: 50%;
+    margin-left:-960px ;
+    position: absolute;
+}
+.zhlq_title {
+    margin-left: 85px;
+    margin-top: -120px;
+    position: absolute;
+    font-size: 42px;
+    color: azure;
+    font-weight:bold;
+    font-family: serif;
+}
+.zhlq_login_box_z{
+    width: 622px;
+    height: 420px;
+
+}
+.zhlq_login_box{
+    width: 620px;
+    height: 420px;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.5);
+    margin-top: -40px;
+    position: absolute;
+    left: 50%;
+    margin-left: -310px;
+}
+.zhlq_login_box_a{
+    width: 596px;
+    height: 390px;
+    background: white;
+    border-radius: 10px;
+    position: absolute;
+    margin-top: 16px;
+    margin-left: 12px;
+}
+.lqzh_box{
+    width: 456px;
+    height:200px;
+    position: absolute;
+    margin-left: 50%;
+    left: -228px;
+    top: 283px;
+
+}
+.xtdl_text{
+    font-size: 22px;
+    color:#22a3ed ;
+    position: relative;
+   top: -10px;
+
+}
+.xtdl_text_lg{
+    color: #d6d6d6;
+
+}
+.user_name{
+    height: 53px;
+    width: 403px;
+
+    margin-left: 53px;
+    padding: 0 0 0 6px;
+}
+.user_name_a{
+
+}
+.user_name_b{
+    margin-top: 28px;
+}
+.user_icon{
+    width: 53px ;
+    height: 53px;
+    background: #22a3ed;
+    position: absolute;
+
+}
+.user_icon_b{
+    margin-top:81px;
+}
+.zhlq_bt{
+    height: 53px;
+    width: 456px;
+    background: #22a3ed;
+    margin-top:30px;
+    border: none;
+    color: white;
+    font-size: 22px;
+}
+.zhlq_mima{
+    margin-top: 10px;
+}
+.zhlq_mima a{
+    text-decoration: none;
+    color: #666666;
+    font-size: 16px;
+}
+.mima_a{
+    margin-left: 8px;
+}
+.mima_checck{
+    width: 16px;
+    height: 16px;
+    border: 1px solid #666666;
+    top: 2px;
+    position: relative;
+}
+
+
+/** 忙鈥奥┟ヂ扁�� */
+
+.zhlq_bt{
+	margin-top:15px;
+	border-radius: 0;
+}
+
+
+.msg_error{
+	width: 100%;
+    height: 45px;
+    float: left;
+    padding-left: 65px;
+    padding-top: 20px;
+    font-size: 16px;
+}
+
+.msg_error label{
+	display: none; color: red; float: left;
+}
+
+.remember{
+    margin-bottom: 0px;
+    height:38px;
+}
+
+.remember i.layui-icon{
+    width: 18px;
+    height: 18px;
+}
+
+.remember .layui-form-checked[lay-skin=primary] i {
+/*     border-color: #22a3ed !important; */
+/*     background-color: #22a3ed; */
+      border-color: #c00000 !important;
+    background-color: #c00000;
+}
+
+.remember .layui-form-checkbox[lay-skin=primary]:hover i{
+	border-color: #22a3ed;
+}
+
+.layui-form-checkbox[lay-skin=primary] span{
+	font-size:16px;
+}
+
+#valid-content{
+	float:right;
+	display:none;
+}
+
+input.validCode{
+    padding-left: 4px;
+    width: 180px;
+    height: 38px;
+    line-height: 38px;
+    border: 1px solid #dee3e6;
+    background: #f4f5f9;
+    font-size: 15px;
+    color: #121b24;
+}
+
+.footer {
+    height: 46px;
+    line-height: 46px;
+    bottom: 0;
+    text-align: center;
+    color: #fff;
+    font-size: 12px;
+    background-color: #5a8aa3;
+}
+.footer {
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 99;
+}

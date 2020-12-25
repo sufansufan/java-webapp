@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ics.system.mapper.SysRoleMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.ics.system.model.SysRole">
+		<id column="id" property="id" />
+		<result column="org_id" property="orgId" />
+		<result column="role_name" property="roleName" />
+		<result column="role_code" property="roleCode" />
+		<result column="authority_code" property="authorityCode" />
+		<result column="authority_desc" property="authorityDesc" />
+		<result column="create_time" property="createTime" />
+		<result column="modify_time" property="modifyTime" />
+		
+		<result column="org_name" property="orgName" />
+	</resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, org_id as org_Id ,role_name AS roleName, role_code AS roleCode, authority_code AS authorityCode, authority_desc AS authorityDesc, create_time AS createTime, modify_time AS modifyTime
+    </sql>
+
+    <select id="selectRelationById" resultMap="BaseResultMap" parameterType="java.lang.String">
+	    SELECT a.*,b.org_name
+		FROM sys_role a 
+		left join sys_org b ON a.org_id=b.id
+		WHERE a.id = #{id,jdbcType=CHAR}
+			
+	</select>
+
+	<select id="selectUserRole" resultMap="BaseResultMap" parameterType="java.lang.String">
+	    select r.* from sys_user t inner join sys_role r on t.role_id = r.id
+	    where 1 = 1
+	    ${ew.sqlSegment};
+	</select>
+</mapper>

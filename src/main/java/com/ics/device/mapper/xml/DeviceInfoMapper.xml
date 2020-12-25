@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ics.device.mapper.DeviceInfoMapper">
+
+	<!--<select id="selectDeviceInfoList" resultType="com.ics.device.model.DeviceInfo">-->
+	    <!--SELECT -->
+	    <!--a.device_name as deviceName,a.enterprise_id as enterpriseId,a.template_id as templateId,a.monitor_type as monitorType,-->
+	    <!--a.longitude,a.latitude,a.modify_time as modifyTime,-->
+	    <!--b.id, b.dynamic_id as dynamicId,b.device_code as deviceCode,b.collect_time as collectTime,b.last_active_time as lastActiveTime,-->
+	    <!--b.offline_time as offlineTime,b.net_state as netState,b.alarm_state as alarmState,b.alarm_type as alarmType-->
+		<!--FROM device_info a -->
+		<!--left join device_dynamic_info b ON a.id=b.id-->
+		<!--WHERE 1=1-->
+		<!--${ew.sqlSegment}-->
+			<!---->
+	<!--</select>-->
+
+	<select id="selectDeviceInfoList" resultType="com.ics.device.model.DeviceInfo">
+	    SELECT
+	    a.device_name as deviceName,a.device_code as deviceCode, a.enterprise_id as enterpriseId,a.template_id as templateId,a.monitor_type as monitorType,
+	    a.longitude,a.latitude,a.modify_time as modifyTime
+		FROM device_info a
+		WHERE 1=1
+		${ew.sqlSegment}
+
+	</select>
+
+</mapper>

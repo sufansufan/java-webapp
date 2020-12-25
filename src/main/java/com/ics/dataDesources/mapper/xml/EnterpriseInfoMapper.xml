@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ics.dataDesources.mapper.EnterpriseInfoMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.ics.dataDesources.model.EnterpriseInfo">
+		<id column="id" property="id" />
+		<result column="enterprise_name" property="enterpriseName" />
+<!--		<result column="device_code" property="deviceCode" />-->
+		<result column="abbreviation" property="abbreviation" />
+		<result column="org_id" property="orgId" />
+		<result column="basin_id" property="basinId" />
+		<result column="concern_degree" property="concernDegree" />
+		<result column="control_level" property="controlLevel" />
+		<result column="drainage_type" property="drainageType" />
+		<result column="outlet_position" property="outletPosition" />
+		<result column="drainage_basin" property="drainageBasin" />
+		<result column="drainage_river" property="drainageRiver" />
+		<result column="enterprise_type" property="enterpriseType" />
+		<result column="enterprise_scale" property="enterpriseScale" />
+		<result column="affiliated_park" property="affiliatedPark" />
+		<result column="industry_category" property="industryCategory" />
+		<result column="enterprise_credit_code" property="enterpriseCreditCode" />
+		<result column="legal_representative" property="legalRepresentative" />
+		<result column="enterprise_product" property="enterpriseProduct" />
+		<result column="enterprise_overview" property="enterpriseOverview" />
+		<result column="photo_path" property="photoPath" />
+		<result column="longitude" property="longitude" />
+		<result column="latitude" property="latitude" />
+		<result column="contact_name" property="contactName" />
+		<result column="contact_phone" property="contactPhone" />
+		<result column="address" property="address" />	
+		<result column="mail_push_state" property="mailPushState" />
+		<result column="mail_address" property="mailAddress" />
+		<result column="wechat_push_state" property="wechatPushState" />
+		<result column="wechat_address" property="wechatAddress" />	
+		<result column="agent_id" property="agentId" />	
+		
+		<result column="create_time" property="createTime" />
+		<result column="modify_time" property="modifyTime" />
+		<result column="org_name" property="orgName" />
+		<result column="basin_name" property="basinName" />
+		<result column="concernDegreeName" property="concernDegreeName" />
+		<result column="enterpriseTypeName" property="enterpriseTypeName" />
+		<result column="affiliatedParkName" property="affiliatedParkName" />
+		<result column="industryCategoryName" property="industryCategoryName" />
+		<result column="controlLevelName" property="controlLevelName" />
+		<result column="drainageTypeName" property="drainageTypeName" />
+		
+		<result column="netState" property="netState" />
+		<result column="alarmState" property="alarmState" />
+		<result column="sn" property="sn" />
+		<result column="ipAddr" property="ipAddr" />
+		<result column="signalStrength" property="signalStrength" />
+		<result column="onlineTime" property="onlineTime" />
+		<result column="startTime" property="startTime" />
+		<result column="operators" property="operators" />
+		<result column="lbsLocating" property="lbsLocating" />
+		<result column="networkType" property="networkType" />
+		<result column="firmwareVersion" property="firmwareVersion" />
+		<result column="cpuLoad" property="cpuLoad" />
+		<result column="memorySurplus" property="memorySurplus" />
+		<result column="memoryPercent" property="memoryPercent" />
+		<result column="flashSurplus" property="flashSurplus" />
+		<result column="flashPercent" property="flashPercent" />
+		
+		
+	</resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, enterprise_name AS enterpriseName,abbreviation AS abbreviation, org_id AS orgId, basin_id AS basinId,concern_degree AS concernDegree, control_level AS controlLevel, drainage_type AS drainageType,
+        outlet_position AS outletPosition, drainage_basin AS drainageBasin, drainage_river AS drainageRiver, enterprise_type AS enterpriseType, enterprise_scale AS enterpriseScale, affiliated_park AS affiliatedPark, 
+        industry_category AS industryCategory, enterprise_credit_code as enterpriseCreditCode, enterprise_credit_code as enterpriseCreditCode, 
+        legal_representative as legalRepresentative, enterprise_product as enterpriseProduct, enterprise_overview as enterpriseOverview, photo_path as photoPath,longitude as longitude, 
+        latitude as latitude, contact_name as contactName, contact_phone as contactPhone, address as address, create_time AS createTime, modify_time AS modifyTime
+    </sql>
+    
+    <select id="selectRelationPageList" resultMap="BaseResultMap">
+<!-- 	    SELECT  -->
+<!-- 	    a.id, a.enterprise_name AS enterpriseName,a.device_code AS deviceCode,a.abbreviation AS abbreviation, a.org_id AS orgId, a.basin_id AS basinId,a.concern_degree AS concernDegree, a.control_level AS controlLevel, a.drainage_type AS drainageType,  -->
+<!--         a.outlet_position AS outletPosition, a.drainage_basin AS drainageBasin, a.drainage_river AS drainageRiver, a.enterprise_type AS enterpriseType, a.enterprise_scale AS enterpriseScale, a.affiliated_park AS affiliatedPark,  -->
+<!--         a.industry_category AS industryCategory, a.enterprise_credit_code as enterpriseCreditCode, a.enterprise_credit_code as enterpriseCreditCode,  -->
+<!--         a.legal_representative as legalRepresentative, a.enterprise_product as enterpriseProduct, a.enterprise_overview as enterpriseOverview, a.photo_path as photoPath,a.longitude as longitude,  -->
+<!--         a.latitude as latitude, a.contact_name as contactName, a.contact_phone as contactPhone, a.address as address, a.create_time AS createTime, a.modify_time AS modifyTime, -->
+<!--         b.org_name as orgName,c.basin_name as basinName -->
+<!-- 		FROM enterprise_info a  -->
+<!-- 		left join sys_org b ON a.org_id=b.id -->
+<!-- 		left join sys_basin c ON a.basin_id=c.id -->
+<!-- 		WHERE 1=1 -->
+<!-- 		${ew.sqlSegment} -->
+		
+		SELECT so.org_name,
+		pe.*,di.net_state as netState,di.alarm_state as alarmState,di.sn as sn,di.ip_addr as ipAddr,di.signal_strength as signalStrength,
+		di.online_time as onlineTime,di.start_time as startTime,di.operators as operators,
+		di.lbs_locating as lbsLocating,di.network_type as networkType,di.firmware_version as firmwareVersion,
+		di.cpu_load as cpuLoad,di.memory_surplus as memorySurplus,di.memory_percent as memoryPercent,
+		di.flash_surplus as flashSurplus,di.flash_percent as flashPercent,di.modify_time as deviceModifyTime
+		FROM enterprise_info pe 
+		LEFT JOIN sys_org so on so.id=pe.org_id
+		LEFT JOIN device_info di on di.device_code=pe.device_code
+		WHERE 1=1
+		${ew.sqlSegment}
+			
+	</select>
+	
+	  <select id="selectRelationList" resultMap="BaseResultMap">
+<!-- 	    SELECT  -->
+<!-- 	    a.id, a.enterprise_name AS enterpriseName,a.device_code AS deviceCode,a.abbreviation AS abbreviation, a.org_id AS orgId, a.basin_id AS basinId,a.concern_degree AS concernDegree, a.control_level AS controlLevel, a.drainage_type AS drainageType,  -->
+<!--         a.outlet_position AS outletPosition, a.drainage_basin AS drainageBasin, a.drainage_river AS drainageRiver, a.enterprise_type AS enterpriseType, a.enterprise_scale AS enterpriseScale, a.affiliated_park AS affiliatedPark,  -->
+<!--         a.industry_category AS industryCategory, a.enterprise_credit_code as enterpriseCreditCode, a.enterprise_credit_code as enterpriseCreditCode,  -->
+<!--         a.legal_representative as legalRepresentative, a.enterprise_product as enterpriseProduct, a.enterprise_overview as enterpriseOverview, a.photo_path as photoPath,a.longitude as longitude,  -->
+<!--         a.latitude as latitude, a.contact_name as contactName, a.contact_phone as contactPhone, a.address as address, a.create_time AS createTime, a.modify_time AS modifyTime, -->
+<!--         b.org_name as orgName,c.basin_name as basinName -->
+<!-- 		FROM enterprise_info a  -->
+<!-- 		left join sys_org b ON a.org_id=b.id -->
+<!-- 		left join sys_basin c ON a.basin_id=c.id -->
+<!-- 		WHERE 1=1 -->
+<!-- 		${ew.sqlSegment} -->
+		
+<!-- 		SELECT so.org_name, -->
+<!-- 		sdi1.item_name as concernDegreeName, -->
+<!-- 		sdi2.item_name as enterpriseTypeName, -->
+<!-- 		sdi3.item_name as affiliatedParkName, -->
+<!-- 		sdi4.item_name as industryCategoryName, -->
+<!-- 		sdi5.item_name as controlLevelName, -->
+<!-- 		sdi6.item_name as drainageTypeName, -->
+<!-- 		pe.*,di.net_state as netState,di.sn as sn,di.ip_addr as ipAddr,di.signal_strength as signalStrength, -->
+<!-- 		di.online_time as onlineTime,di.start_time as startTime,di.operators as operators, -->
+<!-- 		di.lbs_locating as lbsLocating,di.network_type as networkType,di.firmware_version as firmwareVersion, -->
+<!-- 		di.cpu_load as cpuLoad,di.memory_surplus as memorySurplus,di.memory_percent as memoryPercent, -->
+<!-- 		di.flash_surplus as flashSurplus,di.flash_percent as flashPercent -->
+<!-- 		FROM enterprise_info pe  -->
+<!-- 		LEFT JOIN sys_org so on so.id=pe.org_id -->
+<!-- 		LEFT JOIN device_info di on di.device_code=pe.device_code -->
+<!-- 		LEFT JOIN sys_dictionary_item sdi1 on sdi1.item_value=pe.concern_degree and sdi1.dict_id='79cb92aa9c10468192958f7719464690' -->
+<!-- 		LEFT JOIN sys_dictionary_item sdi2 on sdi2.item_value=pe.enterprise_type and sdi2.dict_id='c4f7f18651e444cd9f557fad44880175' -->
+<!-- 		LEFT JOIN sys_dictionary_item sdi3 on sdi3.item_value=pe.affiliated_park and sdi3.dict_id='bbbe43d11e114d2eb908ad2971f844f1' -->
+<!-- 		LEFT JOIN sys_dictionary_item sdi4 on sdi4.item_value=pe.industry_category and sdi4.dict_id='1f6a1a8d94994e1d98531e4ba4331d2d' -->
+<!-- 		LEFT JOIN sys_dictionary_item sdi5 on sdi5.item_value=pe.control_level and sdi5.dict_id='91879397926e40d0aa6e31073d662a45' -->
+<!-- 		LEFT JOIN sys_dictionary_item sdi6 on sdi6.item_value=pe.drainage_type and sdi6.dict_id='e7d15e1e2f524ae79b6875c1d0e8b904' -->
+<!-- 		WHERE 1=1 -->
+<!-- 		${ew.sqlSegment} -->
+		
+		SELECT so.org_name,
+		pe.*,di.net_state as netState,di.alarm_state as alarmState,di.sn as sn,di.ip_addr as ipAddr,di.signal_strength as signalStrength,
+		di.online_time as onlineTime,di.start_time as startTime,di.operators as operators,
+		di.lbs_locating as lbsLocating,di.network_type as networkType,di.firmware_version as firmwareVersion,
+		di.cpu_load as cpuLoad,di.memory_surplus as memorySurplus,di.memory_percent as memoryPercent,
+		di.flash_surplus as flashSurplus,di.flash_percent as flashPercent,di.modify_time as deviceModifyTime
+		FROM enterprise_info pe 
+		LEFT JOIN sys_org so on so.id=pe.org_id
+		LEFT JOIN device_info di on di.device_code=pe.device_code
+		WHERE 1=1
+		${ew.sqlSegment}
+	</select>
+	
+	 <select id="selectRelationById" resultType="com.ics.dataDesources.model.EnterpriseInfo"   parameterType="java.lang.String">
+	    SELECT 
+	    a.id, a.enterprise_name AS enterpriseName,a.device_code AS deviceCode,a.abbreviation AS abbreviation, a.org_id AS orgId, a.basin_id AS basinId,a.concern_degree AS concernDegree, a.control_level AS controlLevel, a.drainage_type AS drainageType, 
+        a.outlet_position AS outletPosition, a.drainage_basin AS drainageBasin, a.drainage_river AS drainageRiver, a.enterprise_type AS enterpriseType, a.enterprise_scale AS enterpriseScale, a.affiliated_park AS affiliatedPark, 
+        a.industry_category AS industryCategory, a.enterprise_credit_code as enterpriseCreditCode, a.enterprise_credit_code as enterpriseCreditCode, 
+        a.legal_representative as legalRepresentative, a.enterprise_product as enterpriseProduct, a.enterprise_overview as enterpriseOverview, a.photo_path as photoPath,a.longitude as longitude, 
+        a.latitude as latitude, a.contact_name as contactName, a.contact_phone as contactPhone, a.address as address, 
+        a.mail_push_state as mailPushState,a.mail_address as mailAddress,a.wechat_push_state as wechatPushState,a.wechat_address as wechatAddress,a.agent_id as agentId,
+        a.create_time AS createTime, a.modify_time AS modifyTime,
+        b.org_name as orgName
+		FROM enterprise_info a 
+		left join sys_org b ON a.org_id=b.id
+		WHERE a.id = #{id,jdbcType=CHAR}
+			
+	</select>
+</mapper>

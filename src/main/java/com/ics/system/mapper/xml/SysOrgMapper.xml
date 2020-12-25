@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ics.system.mapper.SysOrgMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.ics.system.model.SysOrg">
+		<id column="id" property="id" />
+		<result column="org_code" property="orgCode" />
+		<result column="org_name" property="orgName" />
+		<result column="parent_id" property="parentId" />
+		<result column="org_id_path" property="orgIdPath" />
+		<result column="sort_idx" property="sortIdx" />
+		<result column="remark" property="remark" />
+		<result column="create_time" property="createTime" />
+		<result column="modify_time" property="modifyTime" />
+	</resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, org_code AS orgCode, org_name AS orgName, parent_id AS parentId, org_id_path AS orgIdPath, sort_idx AS sortIdx, remark, create_time AS createTime, modify_time AS modifyTime
+    </sql>
+
+</mapper>

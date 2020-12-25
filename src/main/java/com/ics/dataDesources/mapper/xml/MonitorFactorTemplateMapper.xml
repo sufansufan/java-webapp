@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ics.dataDesources.mapper.MonitorFactorTemplateMapper">
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.ics.dataDesources.model.MonitorFactorTemplate">
+		<id column="id" property="id" />
+		<result column="device_code" property="deviceCode" />
+		<result column="machine_name" property="machineName" />
+		<result column="machine_no" property="machineNo" />
+		<result column="factor_code" property="factorCode" />
+		<result column="factor_name" property="factorName" />
+		<result column="factor_tag" property="factorTag" />
+		<result column="factor_unit" property="factorUnit" />
+		<result column="data_accuracy" property="dataAccuracy" />
+		<result column="decimal_digits" property="decimalDigits" />
+		<result column="protocol" property="protocol" />
+		<result column="type_id" property="typeId" />
+		<result column="alarm_state" property="alarmState" />
+		<result column="lower_limit" property="lowerLimit" />
+		<result column="upper_limit" property="upperLimit" />
+		<result column="lower_limit_text" property="lowerLimitText" />
+		<result column="upper_limit_text" property="upperLimitText" />
+		<result column="start_switch" property="startSwitch"/>
+		<result column="create_time" property="createTime" />
+		<result column="modify_time" property="modifyTime" />
+		<result column="enterprise_name" property="enterpriseName" />
+		<result column="is_runtime" property="isRuntime" />
+		<result column="machine_type" property="machineType" />
+	</resultMap>
+
+
+	<select id="selectRelationPageList"  resultMap="BaseResultMap">
+		select a.*,
+		  b.machine_name, b.machine_no, c.enterprise_name, sdi.item_name machineTypeName from  monitor_factor_template a
+		  LEFT JOIN control_machine b on a.machine_id = b.id LEFT JOIN enterprise_info c on b.enterprise_id = c.id
+		  LEFT JOIN sys_dictionary sd on sd.dict_code = 'machineType'
+		  LEFT JOIN sys_dictionary_item sdi on sdi.dict_id = sd.id and sdi.item_value = a.machine_type
+		  WHERE 1=1
+		${ew.sqlSegment}
+	</select>
+
+	<select id="selectRelationList" resultMap="BaseResultMap">
+		select a.*,
+		  b.machine_name, b.machine_no, c.enterprise_name from  monitor_factor_template a
+		  LEFT JOIN control_machine b on a.machine_id = b.id LEFT JOIN enterprise_info c on b.enterprise_id = c.id
+		  WHERE 1=1
+		${ew.sqlSegment}
+	</select>
+
+	<select id="selectList" resultMap="BaseResultMap">
+		select a.*, b.machine_name, b.machine_no from monitor_factor_template a
+		LEFT JOIN control_machine b on a.machine_id = b.id
+		WHERE 1=1
+		${ew.sqlSegment}
+	</select>
+
+</mapper>

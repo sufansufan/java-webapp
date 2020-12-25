@@ -1,0 +1,149 @@
+@charset "utf-8";
+/* CSS Document */
+body{
+	background:url(images/login/register1920x1080.jpg) no-repeat 50% 20%;
+	font-family:微软雅黑;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    background-size: cover;
+    background-size: 100% 100%;
+	}
+.sec{
+	/* height:632px; */
+	height:100%;
+	}
+.sec_inner{
+	height: 100%;
+	width:400px;
+	margin:0 auto;
+	padding-top:104px;
+	text-align: center;
+	}
+.sec_inner img{
+	padding-bottom:0px;
+	}
+.sec_box{
+	width:400px;
+	height:310px;
+	background:#fff;
+	border:1px;
+	text-align: left;
+	box-shadow:2px 2px 5px #5494d1;
+	/* box-shadow:2px 2px 5px #173e07; */
+	}
+	
+.copy {
+    font-size: 12px;
+    color: #dadada;
+    line-height: 37px;
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+	
+.icon_user{
+	background:url(images/login/register_img2_07.png) no-repeat 0 0;
+	position:absolute;
+	top:44px;
+	left:15px;
+	z-index:5;
+	width:17px;
+	height:38px;
+	}
+.icon_password{
+	background:url(images/login/register_img2_10.png) no-repeat 0 0;
+	position:absolute;
+	left:15px;
+	top:30px;
+	z-index:5;
+	width:17px;
+	height:40px;
+	}	
+.div_bor_user{
+	position:relative;
+	width:313px;
+	margin:0 auto;
+	padding-top:43px;
+	}
+.div_bor_password{
+	position:relative;
+	width:313px;
+	margin:0 auto;
+	padding-top:29px;
+	}	
+.div_bor_user input,.div_bor_password input{
+	width:259px;
+	height:40px;
+    line-height: 40px;
+	border:1px solid #dee3e6;
+	border-radius:2px;
+	background:#f4f5f9;
+	padding-left:54px;
+	font-size:15px;
+	color:#121b24;
+	}
+	
+input:focus{
+    outline: none;    
+    border: 1px solid #63a8eb; 
+}
+
+.layui-form-checkbox[lay-skin=primary]:hover i {
+    border-color: #63a8eb;
+    color: #fff;
+}
+.layui-form-checked[lay-skin=primary] i {
+    border-color: #63a8eb;
+    background-color: #63a8eb;
+    color: #fff;
+}
+.layui-form-select dl dd.layui-this{background-color: #63A8EB}
+
+.sec_box button{
+	width:315px;
+	height:40px;
+	background:#63a8eb;
+	/* background:#4b9b2c; */
+	color:#fff;
+	border:0;
+	border-radius:1px;
+	/* margin-top:15px; */
+	margin-bottom: 15px;
+	margin-left:43px;
+	font-size:15px;
+	cursor: pointer;
+	}
+
+.msg_error {
+	width: 354px;
+	height: 25px;
+	float: left;
+	padding-left: 48px;
+	padding-top: 16px;
+    font-size: 14px;
+}
+
+.remember{
+	padding-left:43px;
+	padding-top:15px;
+    width: 316px;
+    height: 40px;
+	}
+.remember img{
+	float:left;
+	}
+.remember span.remember-text{
+	line-height:16px;
+	font-size:15px;
+	color:#121b24;
+	padding-left:6px;
+	}
+.remember span.check{
+	background: url(images/login/register_img_14.png);
+}
+.remember span.nocheck{
+	background: url(images/login/register_grey_03.png);
+}

@@ -1,0 +1,64 @@
+
+{
+	"orgName" : "XXX管理部门",
+	"teamName" : "保养一组",
+	"orgCode" : "001",
+	"teamCode" : "002",
+	"detail": [
+		{
+		    "taskId":"abcdeaf",
+			"typeCode" : "D",
+			"typeName" : "日常点检",
+			"machineName" : "设备1",
+			"machineCode":"003",
+			"status":"待处理",
+			"statusCode" : "1",
+			"optionUserCode" : "",
+			"optionUserName" : "",
+			"confirmUserCode" : "",
+			"confirmUserName" : "",
+			"admitUserCode" : "",
+			"admitUserName" : "",
+			"positionName" : "",
+			"positionCode" : ""
+		},
+		{
+	    	"taskId":"abcdeaf",
+			"typeCode" : "D",
+			"typeName" : "日常点检",
+			"machineName" : "设备1",
+			"machineCode":"003",
+			"status":"待确认",
+			"statusCode" : "3",
+			"optionUserCode" : "",
+			"optionUserName" : "",
+			"confirmUserCode" : "",
+			"confirmUserName" : "",
+			"admitUserCode" : "",
+			"admitUserName" : "",
+			"positionName" : "",
+			"positionCode" : ""
+		},
+		{
+		    "taskId":"abcdeaf",
+			"typeCode" : "E",
+			"typeName" : "异常",
+			"machineName" : "设备1",
+			"machineCode":"003",
+			"status":"待处理",
+			"statusCode" : "1",
+			"optionUserCode" : "001",
+			"optionUserName" : "小王",
+			"confirmUserCode" : "",
+			"confirmUserName" : "",
+			"admitUserCode" : "",
+			"admitUserName" : "",
+			"positionName" : "车间A",
+			"positionCode" : "005",
+			"exceptionDescription":"异常描述"
+		}
+
+
+	]
+
+}

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ics.system.mapper.SysDictionaryItemMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.ics.system.model.SysDictionaryItem">
+		<id column="id" property="id" />
+		<result column="dict_id" property="dictId" />
+		<result column="item_name" property="itemName" />
+		<result column="item_value" property="itemValue" />
+		<result column="status" property="status" />
+		<result column="sort_idx" property="sortIdx" />
+		<result column="remark" property="remark" />
+		<result column="create_time" property="createTime" />
+		<result column="modify_time" property="modifyTime" />
+	</resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, dict_id AS dictId, item_name AS itemName, item_value AS itemValue, status, sort_idx AS sortIdx, remark, create_time AS createTime, modify_time AS modifyTime
+    </sql>
+
+    <select id="selectListByDict" resultType="com.ics.system.model.SysDictionaryItem">
+
+		SELECT
+        	bc.id, dict_id AS dictId, item_name AS itemName, item_value AS itemValue, bc.status, sort_idx AS sortIdx, bc.remark, bc.create_time AS createTime, bc.modify_time AS modifyTime
+		FROM
+			sys_dictionary_item bc LEFT JOIN sys_dictionary bct ON bc.dict_id=bct.id
+		WHERE 1=1
+		${ew.sqlSegment}
+
+	</select>
+
+
+	<select id="selectRelationList" resultType="com.ics.system.model.SysDictionaryItem">
+	SELECT
+				bc.id, dict_id AS dictId, item_name AS itemName, item_value AS itemValue, bc.status, sort_idx AS sortIdx, bc.remark, bc.create_time AS createTime, bc.modify_time AS modifyTime
+	FROM
+		sys_dictionary_item bc LEFT JOIN sys_dictionary bct ON bc.dict_id=bct.id
+	WHERE 1=1
+	${ew.sqlSegment}
+</select>
+
+
+</mapper>

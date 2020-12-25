@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ics.inspectionMaintenance.mapper.ExceptionFixMapper">
+
+    <select id="selectExceptionFixWithItemResultIds" resultType="com.ics.inspectionMaintenance.model.ExceptionFix">
+       select ef.id,ef.exception_id as exceptionId, ef.fix_img_urls as fixImgUrls, ir.id as itrmResultId, t.operate_date as operateDate, ef.describe from exception_fix ef
+        inner join exception e on ef.exception_id = e.id
+        inner join inspection_maintain_item_result ir on e.source_id = ir.id
+        inner join task t on ir.task_id = t.id
+        where 1=1
+	</select>
+</mapper>

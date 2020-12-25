@@ -1,0 +1,1 @@
+ALTER TABLE inspection_maintain_item_result ADD `meter_data` VARCHAR(32) NOT NULL DEFAULT '' COMMENT '仪表数据';

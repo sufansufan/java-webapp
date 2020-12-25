@@ -1,0 +1,1 @@
+ALTER TABLE task add column `reject_desc` VARCHAR(400) NOT NULL DEFAULT '' COMMENT '拒绝描述';

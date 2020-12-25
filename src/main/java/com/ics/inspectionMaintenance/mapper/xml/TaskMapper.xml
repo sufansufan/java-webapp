@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ics.inspectionMaintenance.mapper.TaskMapper">
+    <select id="selectIMTaskByMachineId" resultType="com.ics.inspectionMaintenance.model.Task">
+        select t.id, t.admit_date as admitDate,t.admit_user_id as admitUserId, t.before_task_id, t.confirm_date as confirmDate, t.confirm_user_id as confirmUserId,
+        t.is_available as isAvailable,t.last_modified_time as lastModifiedTime, t.operate_date as operateDate, t.operator_user_id as operatorUserId, t.reject_date as rejectDate,
+        t.reject_user_id as rejectUserId, t.source_id as sourceId, t.start_time as startTime, t.`status`, t.type, ou.user_name as operatorUserName,cu.user_name as confirmUserName,
+        ru.user_name as rejectUserName,au.user_name as admitUserName,temp.template_type as templateType, t.machine_id as machineId
+        from task t
+        inner join inspection_maintain_schedule sc on t.source_id = sc.id and t.type in ('D','R','M')
+        inner join inspection_maintain_template temp on sc.template_id = temp.id
+        left join sys_user ou on t.operator_user_id = ou.id
+        left join sys_user cu on t.confirm_user_id = cu.id
+        left join sys_user ru on t.reject_user_id = ru.id
+        left join sys_user au on t.admit_user_id = au.id
+            WHERE 1=1
+        ${ew.sqlSegment}
+	</select>
+
+    <select id="selectExceptionTaskByMachineId" resultType="com.ics.inspectionMaintenance.model.Task">
+        select t.id, t.admit_date as admitDate,t.admit_user_id as admitUserId, t.before_task_id, t.confirm_date as confirmDate, t.confirm_user_id as confirmUserId,
+        t.is_available as isAvailable,t.last_modified_time as lastModifiedTime, t.operate_date as operateDate, t.operator_user_id as operatorUserId, t.reject_date as rejectDate,
+        t.reject_user_id as rejectUserId, t.source_id as sourceId, t.start_time as startTime, t.`status`, t.type, ou.user_name as operatorUserName,cu.user_name as confirmUserName,
+        ru.user_name as rejectUserName,au.user_name as admitUserName, t.machine_id as machineId,sdi.item_name machineTypeName,eu.user_name As checkUserName,
+        e.create_time AS createTime
+        from task t
+        LEFT JOIN exception e on e.id = t.source_id
+        LEFT JOIN sys_user eu ON e.checkout_user_id = eu.id
+        left join sys_user ou on t.operator_user_id = ou.id
+        left join sys_user cu on t.confirm_user_id = cu.id
+        left join sys_user ru on t.reject_user_id = ru.id
+        left join sys_user au on t.admit_user_id = au.id
+        left join control_machine cm on cm.id = t.machine_id
+        left join sys_dictionary sd on sd.dict_code = 'machineType'
+        left join sys_dictionary_item sdi on sdi.dict_id = sd.id and sdi.item_value = cm.machine_type
+            WHERE t.type in ('DE','RE', 'ME', 'BE')
+        ${ew.sqlSegment}
+	</select>
+    <select id="selectTaskAllByPage" resultType="com.ics.inspectionMaintenance.model.Task">
+        select t.id, t.admit_date as admitDate,t.admit_user_id as admitUserId, t.before_task_id, t.confirm_date as confirmDate, t.confirm_user_id as confirmUserId,
+        t.is_available as isAvailable,t.last_modified_time as lastModifiedTime, t.operate_date as operateDate, t.operator_user_id as operatorUserId, t.reject_date as rejectDate,
+        t.reject_user_id as rejectUserId, t.source_id as sourceId, t.start_time as startTime, t.`status`, t.type, ou.user_name as operatorUserName,cu.user_name as confirmUserName,
+        ru.user_name as rejectUserName,au.user_name as admitUserName, t.machine_id as machineId
+        from task t
+        left join sys_user ou on t.operator_user_id = ou.id
+        left join sys_user cu on t.confirm_user_id = cu.id
+        left join sys_user ru on t.reject_user_id = ru.id
+        left join sys_user au on t.admit_user_id = au.id
+            WHERE 1=1
+        ${ew.sqlSegment}
+	</select>
+    <select id="selectTeamTaskByUserId" resultType="com.ics.inspectionMaintenance.model.Task">
+        select t.id, t.admit_date as admitDate,t.admit_user_id as admitUserId, t.before_task_id, t.confirm_date as confirmDate, t.confirm_user_id as confirmUserId,
+        t.is_available as isAvailable,t.last_modified_time as lastModifiedTime, t.operate_date as operateDate, t.operator_user_id as operatorUserId, t.reject_date as rejectDate,
+        t.reject_user_id as rejectUserId, t.source_id as sourceId, t.start_time as startTime, t.`status`, t.type, ou.user_name as operatorUserName,cu.user_name as confirmUserName,
+        ru.user_name as rejectUserName,au.user_name as admitUserName, t.machine_id as machineId , sm.team_id as teamId
+        from task t
+        left join sys_user ou on t.operator_user_id = ou.id
+        left join sys_user cu on t.confirm_user_id = cu.id
+        left join sys_user ru on t.reject_user_id = ru.id
+        left join sys_user au on t.admit_user_id = au.id
+        inner join control_machine m on t.machine_id = m.id
+        inner join sys_team_member sm on m.team_id = sm.team_id
+        WHERE 1=1
+        ${ew.sqlSegment}
+	</select>
+    <select id="selectTaskIncludeTeamId" resultType="com.ics.inspectionMaintenance.model.Task">
+        select t.id, t.admit_date as admitDate,t.admit_user_id as admitUserId, t.before_task_id, t.confirm_date as confirmDate, t.confirm_user_id as confirmUserId,
+        t.is_available as isAvailable,t.last_modified_time as lastModifiedTime, t.operate_date as operateDate, t.operator_user_id as operatorUserId, t.reject_date as rejectDate,
+        t.reject_user_id as rejectUserId, t.source_id as sourceId, t.start_time as startTime, t.`status`, t.type, t.machine_id as machineId, m.team_id as teamId
+        from task t
+        inner join control_machine m on t.machine_id = m.id
+        WHERE 1=1
+        ${ew.sqlSegment}
+	</select>
+
+    <update id="updateTaskStatusBySchedule" parameterType="map">
+        update task set is_available = 0
+        where is_available = 1 and source_id in (select id from inspection_maintain_schedule s where s.template_id = #{templateId} AND s.machine_id = #{machineId}
+        AND s.date >= #{startDate,jdbcType=TIMESTAMP} AND s.date &lt;= #{endDate,jdbcType=TIMESTAMP}  )
+    </update>
+    <select id="selectTaskForApp" resultType="com.ics.inspectionMaintenance.model.TaskForApp">
+        select
+        t.id as taskId,t.type,cm.machine_name as machineName, st.`name` as teamName,st.id as teamId,
+        t.`status`,cku.user_name as checkOutUserName, ex.`describe` as excceptionDesc,t.start_time as startTime, cm.location
+        from task t
+        inner join control_machine cm on t.machine_id = cm.id
+        inner join sys_team st on cm.team_id = st.id
+        INNER JOIN sys_org org on cm.org_id = org.id
+        left join sys_user ou on t.operator_user_id = ou.id
+        left join sys_user cu on t.confirm_user_id = cu.id
+        left join sys_user ru on t.reject_user_id = ru.id
+        left join sys_user au on t.admit_user_id = au.id
+        LEFT join inspection_maintain_schedule im on t.source_id = im.id and t.type in ('R','D','M')
+        LEFT join exception ex on t.source_id = ex.id and t.type in ('BE','RE','DE','ME')
+        left join sys_user cku on ex.checkout_user_id = cku.id
+            WHERE 1=1
+        ${ew.sqlSegment}
+	</select>
+    <select id="taskOverviewList" resultType="com.ics.inspectionMaintenance.model.WorkOrderOverview">
+        select tm.`name` as teamName, t.type, cm.machine_name as machineName, cm.machine_no as machineNo, t.id as taskId,
+         t.operate_date as time, t.`status` from task t
+        inner join control_machine cm on t.machine_id = cm.id
+        inner join sys_team tm on cm.team_id = tm.id
+        WHERE t.type in ('R','D','M')
+        ${ew.sqlSegment}
+	</select>
+
+    <select id="getExceptionTaskByImTaskIds" resultType="com.ics.inspectionMaintenance.model.ExceptionTaskCalculateModel">
+        select imTask.id  as imTaskId, exceptionTask.id as exceptionTaskId, exceptionTask.type, exceptionTask.`status`
+        from task exceptionTask
+        inner join exception e on exceptionTask.source_id = e.id
+        inner join inspection_maintain_item_result ir on e.source_id = ir.id
+        inner join task imTask on ir.task_id = imTask.id
+        where exceptionTask.type in ('RE','DE','ME')
+        ${ew.sqlSegment}
+	</select>
+
+</mapper>

@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ics.remoteMonitor.mapper.RtdHistoryFromLatestWeekMapper">
+    <resultMap id="BaseResultMap" type="com.ics.remoteMonitor.model.RtdHistoryFromLatestWeek">
+		<id column="id" property="id" jdbcType="CHAR" />
+		<result column="device_code" property="deviceCode" jdbcType="CHAR" />
+		<result column="condensing_device_num" property="condensingDeviceNum" jdbcType="CHAR" />
+		<result column="factor_code" property="factorCode" jdbcType="CHAR" />
+		<result column="factor_value" property="factorValue" jdbcType="CHAR" />
+		<result column="collect_time" property="collectTime" jdbcType="TIMESTAMP" />
+	</resultMap>
+
+	<select id="getCount" resultType="java.lang.Integer" parameterType="map">
+		 SELECT count(DISTINCT a.id) from rtd_history_latestweek a
+        LEFT JOIN monitor_factor_template b on a.factor_code =b.factor_code
+        where 1=1
+		<if test="deviceCode != null">
+			and a.device_code = #{deviceCode}
+		</if>
+		<if test="condensingDeviceNum != null">
+			and a.condensing_device_num = #{condensingDeviceNum}
+		</if>
+		<if test="factorCode != null">
+			and a.factor_code = #{factorCode}
+		</if>
+		 <if test="factorCodeList != null and factorCodeList.size()>0">
+		and a.factor_code in
+		<foreach collection="factorCodeList" item="item" index="index" open="(" separator="," close=")">
+		#{item}
+		</foreach>
+		</if>
+		<if test="timeList != null and timeList.size()>0">
+		and a.collect_time in
+		<foreach collection="timeList" item="item" index="index" open="(" separator="," close=")">
+		#{item}
+		</foreach>
+		</if>
+         <if test="startTime != null">
+			and a.collect_time &gt;='${startTime}'
+		</if>
+		<if test="endTime != null">
+			and a.collect_time &lt;= '${endTime}'
+		</if>
+		<if test="factorTag != null">
+			and b.factor_tag = #{factorTag}
+		</if>
+		<if test="factorTagList != null and factorTagList.size()>0">
+		and b.factor_tag in
+		<foreach collection="factorTagList" item="item" index="index" open="(" separator="," close=")">
+		#{item}
+		</foreach>
+		</if>
+	</select>
+
+
+	<select id="getList" resultType="com.ics.remoteMonitor.model.RtdHistoryFromLatestWeek" parameterType="map">
+    SELECT a.id, a.device_code as deviceCode, a.condensing_device_num as condensingDeviceNum, a.factor_code as factorCode, a.factor_value as factorValue,
+      a.collect_time as collectTime, b.factor_tag as factorTag from rtd_history_latestweek a
+       LEFT JOIN monitor_factor_template b on a.factor_code = b.factor_code and a.device_code = b.device_code
+       RIGHT JOIN control_machine c on c.id = b.machine_id and c.machine_no = a.condensing_device_num
+       where 1=1
+		<if test="deviceCode != null">
+			and a.device_code = #{deviceCode}
+		</if>
+    <if test="machineId != null">
+      and c.id = #{machineId}
+    </if>
+    <if test="location != null">
+      and c.location = #{location}
+    </if>
+		<if test="condensingDeviceNum != null">
+			and a.condensing_device_num = #{condensingDeviceNum}
+		</if>
+		<if test="factorCode != null">
+			and a.factor_code = #{factorCode}
+		</if>
+		 <if test="factorCodeList != null and factorCodeList.size()>0">
+		and a.factor_code in
+		<foreach collection="factorCodeList" item="item" index="index" open="(" separator="," close=")">
+		#{item}
+		</foreach>
+		</if>
+		<if test="timeList != null and timeList.size()>0">
+		and a.collect_time in
+		<foreach collection="timeList" item="item" index="index" open="(" separator="," close=")">
+		#{item}
+		</foreach>
+		</if>
+    <if test="startTime != null">
+			and a.collect_time &gt;='${startTime}'
+		</if>
+		<if test="endTime != null">
+			and a.collect_time &lt;= '${endTime}'
+		</if>
+    <if test="factorTag != null">
+      and FIND_IN_SET('${factorTag}', b.factor_tag)
+		</if>
+		 <if test="factorTagList != null and factorTagList.size()>0">
+		and b.factor_tag in
+		<foreach collection="factorTagList" item="item" index="index" open="(" separator="," close=")">
+		#{item}
+		</foreach>
+		</if>
+		<if test="sort != null">
+			order by a.collect_time ${sort}
+		</if>
+		<if test="pageStart!= null and pageEnd!= null">
+			limit ${pageStart},${pageEnd}
+		</if>
+	</select>
+
+
+<!-- 		<select id="getCount" resultType="java.lang.Integer" parameterType="map" statementType="STATEMENT"> -->
+<!-- 		SELECT count(*) from ( -->
+<!-- 		<if test="tableDateList != null and tableDateList.size()>0"> -->
+<!-- 		  <foreach collection="tableDateList" item="item" index="index" open="" separator="UNION ALL" close=""> -->
+<!-- 	     SELECT * from ${item} where 1=1 -->
+<!-- 		<if test="deviceCode != null"> -->
+<!-- 			and device_code = '${deviceCode}' -->
+<!-- 		</if> -->
+<!-- 		<if test="condensingDeviceNum != null"> -->
+<!-- 			and condensing_device_num = '${condensingDeviceNum}' -->
+<!-- 		</if> -->
+<!-- 		<if test="factorCode != null"> -->
+<!-- 			and factor_code = '${factorCode}' -->
+<!-- 		 </if> -->
+<!--          <if test="startTime != null"> -->
+<!-- 			and collect_time &gt;='${startTime}' -->
+<!-- 		</if> -->
+<!-- 		<if test="endTime != null"> -->
+<!-- 			and collect_time &lt;= '${endTime}' -->
+<!-- 		</if> -->
+<!-- 		<if test="timeList != null and timeList.size()>0"> -->
+<!-- 		and collect_time in -->
+<!-- 		<foreach collection="timeList" item="item" index="index" open="(" separator="," close=")"> -->
+<!-- 		'${item}' -->
+<!-- 		</foreach> -->
+<!-- 		</if> -->
+<!-- 	        </foreach> -->
+<!-- 		</if> -->
+<!-- 		) a  -->
+<!-- 	</select> -->
+
+
+<!-- 	<select id="getList" resultMap="BaseResultMap" parameterType="map" statementType="STATEMENT"> -->
+<!--   	   SELECT * from ( -->
+<!-- 		<if test="tableDateList != null and tableDateList.size()>0"> -->
+<!-- 		  <foreach collection="tableDateList" item="item" index="index" open="" separator="UNION ALL" close=""> -->
+<!-- 	     SELECT * from ${item} where 1=1 -->
+<!-- 		<if test="deviceCode != null"> -->
+<!-- 			and device_code = '${deviceCode}' -->
+<!-- 		</if> -->
+<!-- 		<if test="condensingDeviceNum != null"> -->
+<!-- 			and condensing_device_num = '${condensingDeviceNum}' -->
+<!-- 		</if> -->
+<!-- 		<if test="factorCode != null"> -->
+<!-- 			and factor_code = '${factorCode}' -->
+<!-- 		 </if> -->
+<!--          <if test="startTime != null"> -->
+<!-- 			and collect_time &gt;='${startTime}' -->
+<!-- 		</if> -->
+<!-- 		<if test="endTime != null"> -->
+<!-- 			and collect_time &lt;= '${endTime}' -->
+<!-- 		</if> -->
+<!-- 		<if test="timeList != null and timeList.size()>0"> -->
+<!-- 		and collect_time in -->
+<!-- 		<foreach collection="timeList" item="item" index="index" open="(" separator="," close=")"> -->
+<!-- 		'${item}' -->
+<!-- 		</foreach> -->
+<!-- 		</if> -->
+<!-- 	        </foreach> -->
+<!-- 		</if> -->
+<!-- 		) a  -->
+<!-- 		<if test="sort != null"> -->
+<!-- 			order by a.collect_time ${sort} -->
+<!-- 		</if> -->
+<!-- 	     <if test="pageStart!= null and pageEnd!= null"> -->
+<!-- 			limit ${pageStart},${pageEnd} -->
+<!-- 		</if> -->
+<!-- 	</select> -->
+
+
+
+	<select id="getMaxCount" resultType="java.lang.Integer" parameterType="map" statementType="STATEMENT">
+		select max(a.aa) from(
+		<if test="factorCodeList != null and factorCodeList.size()>0">
+		<foreach collection="factorCodeList" item="item2" index="index" open="" separator="UNION ALL" close="">
+		SELECT count(*) as aa from (
+		<if test="tableDateList != null and tableDateList.size()>0">
+		  <foreach collection="tableDateList" item="item" index="index" open="" separator="UNION ALL" close="">
+	     SELECT * from ${item} where 1=1
+		<if test="deviceCode != null">
+			and device_code = '${deviceCode}'
+		</if>
+		<if test="condensingDeviceNum != null">
+			and condensing_device_num = '${condensingDeviceNum}'
+		</if>
+<!-- 		<if test="factorCode != null"> -->
+			and factor_code = '${item2}'
+<!-- 		 </if> -->
+         <if test="startTime != null">
+			and collect_time &gt;='${startTime}'
+		</if>
+		<if test="endTime != null">
+			and collect_time &lt;= '${endTime}'
+		</if>
+		<if test="timeList != null and timeList.size()>0">
+		and collect_time in
+		<foreach collection="timeList" item="item" index="index" open="(" separator="," close=")">
+		'${item}'
+		</foreach>
+		</if>
+	        </foreach>
+		</if>
+		) ${item2}
+		</foreach>
+		</if>
+		)a
+
+	</select>
+
+
+	<select id="addBatchRtdHistory" resultType="java.lang.Integer" parameterType="map" statementType="STATEMENT">
+		insert into ${tableName} values
+		<foreach collection="rtdHistoryList" item="item" index="index" open="" separator="," close="">
+		<trim prefix=" (" suffix=")" suffixOverrides=",">
+		'${item.id}','${item.dynamicId}','${item.deviceCode}','${item.condensingDeviceNum}','${item.factorCode}','${item.factorValue}','${item.collectTimeStr}'
+
+		</trim>
+		</foreach>
+
+	</select>
+
+
+	<select id="getListExcel" parameterType="map" resultType="java.util.HashMap" statementType="STATEMENT">
+       SELECT a.*,b.device_name from (
+		<if test="tableDateList != null and tableDateList.size()>0">
+		  <foreach collection="tableDateList" item="item" index="index" open="" separator="UNION ALL" close="">
+	     SELECT * from ${item} where 1=1
+		<if test="deviceCode != null">
+			and device_code = '${deviceCode}'
+		</if>
+		<if test="condensingDeviceNum != null">
+			and condensing_device_num = '${condensingDeviceNum}'
+		</if>
+		<if test="factorCode != null">
+			and factor_code = '${factorCode}'
+		 </if>
+         <if test="startTime != null">
+			and collect_time &gt;='${startTime}'
+		</if>
+		<if test="endTime != null">
+			and collect_time &lt;= '${endTime}'
+		</if>
+	        </foreach>
+		</if>
+		) a
+		left join device_info b on a.device_code = b.device_code
+		order by a.collect_time desc
+  </select>
+
+</mapper>

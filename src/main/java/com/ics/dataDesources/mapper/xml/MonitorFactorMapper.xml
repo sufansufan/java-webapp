@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ics.dataDesources.mapper.MonitorFactorMapper">
+
+    <select id="selectRelationPageList" resultType="com.ics.dataDesources.model.MonitorFactor">
+	    select a.id as id, a.factor_code as factorCode, a.factor_name as factorName,
+        a.factor_tag as factorTag, a.factor_unit as factorUnit, a.data_accuracy as dataAccuracy,
+        a.decimal_digits as decimalDigits, a.protocol as protocol, a.type_id as typeId,
+        a.alarm_state as alarmState, a.lower_limit as lowerLimit, a.upper_limit as upperLimit,
+        a.create_time as createTime, a.modify_time as modifyTime, a.machine_type as machineType,
+        a.upper_limit_text as upperLimitText, a.lower_limit_text as lowerLimitText,
+        a.start_switch as startSwitch,
+        b.item_name as machineName from monitor_factor a
+        LEFT JOIN sys_dictionary_item b on a.machine_type = b.item_value
+        LEFT JOIN sys_dictionary c on c.id = b.dict_id
+        where c.dict_code = 'machineType'
+        ${ew.sqlSegment}
+
+	</select>
+
+    <select id="selectRelationList" resultType="com.ics.dataDesources.model.MonitorFactor">
+        select a.id as id, a.factor_code as factorCode, a.factor_name as factorName,
+        a.factor_tag as factorTag, a.factor_unit as factorUnit, a.data_accuracy as dataAccuracy,
+        a.decimal_digits as decimalDigits, a.protocol as protocol, a.type_id as typeId,
+        a.alarm_state as alarmState, a.lower_limit as lowerLimit, a.upper_limit as upperLimit,
+        a.create_time as createTime, a.modify_time as modifyTime, a.machine_type as machineType,
+        a.start_switch as startSwitch,
+        b.id as deviceId from monitor_factor a, control_machine b where a.machine_type = b.machine_type
+        ${ew.sqlSegment}
+    </select>
+
+
+</mapper>

@@ -1,0 +1,177 @@
+
+/** layuié»˜è®¤æ ·å¼è¦†ç›–  **/
+
+
+/* .layui-table-body{overflow-x: hidden;} */
+.layui-table, .layui-table-view{margin:0}
+
+.layui-form-onswitch {
+    border-color: #22A3ED;
+    background-color: #22A3ED;
+}
+
+.layui-form-radio>i:hover, .layui-form-radioed>i {
+    color: #22A3ED;
+}
+
+.layui-table[lay-even] tr:nth-child(even){
+    background-color: #f6f6f6 !important;
+}
+
+/** layerå¼¹çª—ä¸­çš„é”™è¯¯æ¶ˆæ¯tipsæ ·å¼ */
+.layui-layer.layui-layer-tips .layui-layer-content{
+	background-color: #FF5722;
+}
+
+.layui-layer.layui-layer-tips i.layui-layer-TipsB, .layui-layer.layui-layer-tips i.layui-layer-TipsT{
+	border-right-color: #FF5722;
+}
+/** è¡¨æ ¼ */
+.layui-table{
+	color:#333;
+}
+.layui-table tbody tr:hover, .layui-table thead tr, .layui-table-click, .layui-table-header, .layui-table-hover, .layui-table-mend, .layui-table-patch, .layui-table-tool{
+	/* background-color: #f4f5f9; */
+}
+.layui-table-click{background: none}
+
+.layui-border-box.layui-table-view{
+	background-color:#fff;
+    border: 1px solid #dee3e6;
+}
+
+.layui-table-cell{height:32px;line-height:32px}
+
+.layui-table-cell .layui-progress{height: 12px;}
+.layui-table-cell .layui-progress-bar{height: 12px;}
+.layui-table-cell .layui-progress-text{top: -24px;top: -26px \9;}
+
+.layui-table-page{
+    padding: 17px;
+    height: 61px;
+}
+
+.layui-form-checked[lay-skin=primary] i {
+    border-color: #22A3ED !important;
+    background-color: #22A3ED;
+}
+
+.layui-form-checkbox[lay-skin=primary]:hover i{
+	border-color: #22A3ED;
+}
+
+.layui-form-checked, .layui-form-checked:hover{border-color: #4182b8;}
+.layui-form-checked span, .layui-form-checked:hover span{background-color: #4182b8;}
+.layui-form-checkbox[lay-skin=primary] span{float: right; padding-right: 15px; line-height: 18px; background: 0 0; color: #666;}
+.layui-form-checked i, .layui-form-checked:hover i{color: #4182b8;}
+.layui-form-checkbox {line-height:27px\9}
+/** æ—¶é—´é€‰æ‹©å™¨ é¢œè‰² */
+.layui-laydate .layui-this{background-color:#22A3ED !important}
+.layui-laydate-footer span:hover{color:#22A3ED !important}
+.layui-laydate-footer span[lay-type=date]{color:#22A3ED !important}
+
+.layui-laydate-content .laydate-day-next, .layui-laydate-content .laydate-day-prev{ color: #9e9e9e !important;}
+
+.layui-form-select dl{max-height: 200px;}
+.layui-form-select dl dd.layui-this{background-color: #22A3ED}
+
+.layui-nav .layui-this:after, .layui-nav-bar, .layui-nav-tree .layui-nav-itemed:after{
+	background-color: #22A3ED
+}
+.layui-tab-brief>.layui-tab-more li.layui-this:after, .layui-tab-brief>.layui-tab-title .layui-this:after{
+	border-bottom: 2px solid #22A3ED
+}
+
+.layui-tab-brief>.layui-tab-title .layui-this{color:#22A3ED}
+
+/** è¡¨æ ¼checkboxæ ·å¼ä¸Šæµ® */
+.layui-table-cell .layui-form-checkbox[lay-skin=primary]{/* top:6px;top:0px \9; */}
+
+
+.layui-icon{font-size:17px;}
+.layui-btn-disabled, .layui-btn-disabled:active, .layui-btn-disabled:hover{border: 1px solid #e6e6e6; background-color: #FBFBFB; color: #C9C9C9; cursor: not-allowed; -moz-opacity: 0.8; opacity: 0.8; filter: alpha(opacity=80);}
+
+.layui-upload-drag .layui-icon{color: #2370bb;}
+
+/** ä¸‹æ‹‰æ¡†é€‰ä¸­æ ·å¼ */
+.layui-nav-child dd.layui-this{background-color: #FFF; color: #333;}
+
+
+/*** åˆ†é¡µè‡ªå®šä¹‰  ***/
+
+.pager-prev{width:14px;height:26px;background: url(images/pager/arrow_left.png) no-repeat center center;}
+.pager-next{width:14px;height:26px;background: url(images/pager/arrow_right.png) no-repeat center center;}
+.layui-laypage-prev.layui-disabled .pager-prev{background: url(images/pager/arrow_left_disabled.png) no-repeat center center;}
+.layui-laypage-next.layui-disabled .pager-next{background: url(images/pager/arrow_right_disabled.png) no-repeat center center;}
+
+.layui-laypage .layui-laypage-curr .layui-laypage-em{
+	background-color: #22A3ED;
+}
+.layui-laypage input:focus, .layui-laypage select:focus{
+	border-color: #22A3ED !important;
+}
+.layui-laypage a:hover{color:#22A3ED}
+
+.layui-btn-sm i{font-size: inherit !important;}
+
+.layui-progress-big .layui-progress-bar{line-height:16px \9;}
+.layui-btn-light-blue{background-color: #22A3ED;}
+.layui-btn-light-gray{background-color: #E2E2E2;color:#888888}
+.layui-btn-light-gray:hover{color:#888888}
+.layui-btn-dark-purple{background-color: #724ab1;}
+.layui-btn-light-blue2{background-color: #5A99D6}
+.layui-bg-deep-blue{background-color: #01AAED}
+.layui-btn-deep-blue{background-color: #3d8dce}
+.layui-btn-primary:hover{border-color: #22A3ED}
+.layui-btn-group .layui-btn-primary:hover{color: #22A3ED;}
+.layui-btn-pink{background-color: #FF5602}
+
+.layui-btn-sky-blue{background-color: #22A3ED}
+.layui-btm-serious{background-color: #d11d1d;}
+.layui-btn-lavender{background-color: #926DDE}
+.layui-btn-slightgreen{background-color: #4ab173;}
+
+.layui-disabled, .layui-disabled:hover{color: #7b7b7b!important;}
+
+
+/** layerè­¦å‘Šçª—è‡ªå®šä¹‰æ ·å¼ */
+body .warn-class .layui-layer-title{ color:#fff; border: none;    background-color: #dea742; font-size: 14px;}
+body .warn-class .layui-layer-btn{}
+body .warn-class .layui-layer-btn a{background:#333;}
+body .warn-class .layui-layer-btn .layui-layer-btn0{ border-color: #dfa640; background-color: #dfa640; color: #fff;}
+body .warn-class .layui-layer-btn .layui-layer-btn1{ border: 1px solid #dedede; background-color: #fff; color: #333;}
+/** layeræ™®é€šçª—è‡ªå®šä¹‰æ ·å¼ */
+body .normal-class .layui-layer-title{ color:#fff; border: none;    background-color: #62a9ec; font-size: 14px;}
+body .normal-class .layui-layer-btn{}
+body .normal-class .layui-layer-btn a{background:#333;}
+body .normal-class .layui-layer-btn .layui-layer-btn0{ border-color: #62a9ec; background-color: #62a9ec; color: #fff;}
+body .normal-class .layui-layer-btn .layui-layer-btn1{ border: 1px solid #dedede; background-color: #fff; color: #333;}
+
+/** layerä¸¥è‚ƒå¼¹çª—è‡ªå®šä¹‰æ ·å¼ */
+body .serious-class .layui-layer-ico {  background: url(images/common/layer_close.png) no-repeat;}
+body .serious-class .layui-layer-title{ color:#fff; border: none; background-color: #363c41; font-size: 14px;}
+body .serious-class .layui-layer-btn{}
+body .serious-class .layui-layer-btn a{background:#333;}
+body .serious-class .layui-layer-btn .layui-layer-btn0{ border-color: #dfa640; background-color: #dfa640; color: #fff;}
+body .serious-class .layui-layer-btn .layui-layer-btn1{ border: 1px solid #dedede; background-color: #fff; color: #333;}
+
+/** layerä¸¥é‡è­¦å‘Šè‡ªå®šä¹‰æ ·å¼ */
+body .very-serious-class .layui-layer-ico {  background: url(images/common/layer_close.png) no-repeat;}
+body .very-serious-class .layui-layer-title{ color:#fff; border: none; background-color: #d11d1d; font-size: 14px;}
+body .very-serious-class .layui-layer-btn{}
+body .very-serious-class .layui-layer-btn a{background:#333;}
+body .very-serious-class .layui-layer-btn .layui-layer-btn0{ border-color: #d11d1d; background-color: #dfa640; color: #fff;}
+body .very-serious-class .layui-layer-btn .layui-layer-btn1{ border: 1px solid #dedede; background-color: #fff; color: #333;}
+
+.layui-form-item .layui-form-checkbox i {
+  border-left: 1px solid #d2d2d2;
+  width: 20px;
+  height: 20px;
+  font-size: 16px;
+  margin-top: 3px;
+  line-height: 21px;
+}
+
+.layui-form-item .layui-form-checkbox {
+  margin-left: -7px;
+}

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ics.dataDesources.mapper.ControlMachineMapper">
+
+    <select id="selectRelationPageList" resultType="com.ics.dataDesources.model.ControlMachine">
+	    select  a.id, a.serialNo,a.deviceCode,a.enterpriseId,a.orgId,
+        a.templateId,a.machineNo,a.machineName,a.runtime ,a.machineType,
+        a.machineModel,a.photoPath,a.remark,a.purchasingTime,a.manufacotry,
+        a.machineUsage, a.ratedPower, a.onlineStatus,
+        a.powerStatus, a.alarmStatus, a.status,
+        a.createTime,a.modifyTime,a.enterpriseName,b.item_name as machineTypeName
+        from (SELECT  a.id as id,a.serial_no as serialNo,a.device_code as deviceCode,a.enterprise_id as enterpriseId, a.org_id as orgId,
+        a.template_id as templateId,a.machine_no as machineNo, a.machine_name as machineName, a.runtime as runtime, a.machine_type as machineType,
+        a.machine_model as machineModel, a.photo_path as photoPath,
+        a.remark as remark, a.purchasing_time as purchasingTime, a.manufacotry as manufacotry,
+        a.machine_usage as machineUsage, a.rated_power as ratedPower, a.online_status as onlineStatus,
+        a.power_status as powerStatus, a.alarm_status as alarmStatus, a.status as status,
+        a.create_time as createTime,a.modify_time as modifyTime,a.running_status as runningStatus,
+        b.enterprise_name as enterpriseName
+        from control_machine a
+        left join enterprise_info b on a.enterprise_id = b.id) a left join sys_dictionary_item b on a.machineType = b.item_value
+        WHERE 1=1
+        ${ew.sqlSegment}
+
+	</select>
+
+    <select id="selectRelationList" resultType="com.ics.dataDesources.model.ControlMachine">
+      SELECT  a.id as id,a.device_code as deviceCode,a.enterprise_id as enterpriseId,a.template_id as templateId,a.machine_no as machineNo,
+	    a.machine_name as machineName,a.alarm_status as alarmState,a.power_status as switchState,a.runtime as runtime ,a.machine_type as machineType,a.machine_model as machineModel,a.photo_path as photoPath,
+	    a.remark as remark,a.create_time as createTime,a.modify_time as modifyTime,b.enterprise_name as enterpriseName, a.running_status as runningStatus, a.location as location, a.early_alarm_status as EarlyAlarmStatus, a.fault_status as FaultStatus, c.item_name as MachineTypeName
+	    from control_machine a
+	    left join enterprise_info b on a.enterprise_id = b.id
+      left join sys_dictionary_item c on a.machine_type = c.item_value
+		WHERE 1=1
+		${ew.sqlSegment}
+	</select>
+
+
+    <select id="getCount" resultType="java.lang.Integer" parameterType="map">
+     SELECT COUNT(1) from control_machine a
+        where 1=1
+        ${ew.sqlSegment}
+  </select>
+
+
+    <select id="selectMachineById" resultType="com.ics.dataDesources.model.ControlMachine">
+        select
+            cm.*, o.org_name, st.`name` teamName
+        from control_machine cm
+        left join sys_org o on o.id = cm.org_id
+        left join sys_team st on st.id = cm.team_id
+        where cm.id = #{id}
+	</select>
+
+</mapper>

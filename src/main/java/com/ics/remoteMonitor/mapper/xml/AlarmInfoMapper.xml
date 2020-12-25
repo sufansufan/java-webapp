@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ics.remoteMonitor.mapper.AlarmInfoMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.ics.remoteMonitor.model.AlarmInfo">
+		<id column="id" property="id" />
+		<id column="dynamic_id" property="dynamicId" />
+		<result column="device_code" property="deviceCode" />
+		<result column="condensing_device_num" property="condensingDeviceNum" />
+		<result column="factor_code" property="factorCode" />
+		<result column="factor_value" property="factorValue" />
+		<result column="alarm_type" property="alarmType" />
+		<result column="alarm_content" property="alarmContent" />
+		<result column="create_time" property="createTime" />
+		<result column="recovery_time" property="recoveryTime" />
+
+		<result column="factor_name" property="factorName" />
+		<result column="enterprise_name" property="enterpriseName" />
+		<result column="machine_id" property="machineId" />
+		<result column="machine_name" property="machineName" />
+		<result column="factor_name" property="factorName" />
+	</resultMap>
+
+<!--     通用查询结果列 -->
+    <sql id="Base_Column_List">
+    id as id,device_code as deviceCode,condensing_device_num as condensingDeviceNum,abbreviation as abbreviation,
+    alarm_type as alarmType,alarm_content as alarmContent,create_time as createTime,recovery_time as recoveryTime
+    </sql>
+
+    <select id="selectRelationPageList" resultMap="BaseResultMap">
+	    SELECT a.* FROM alarm_info a,device_info b where
+        a.dynamic_id=b.dynamic_id
+		${ew.sqlSegment}
+	</select>
+
+	  <select id="selectRelationList" resultMap="BaseResultMap">
+	SELECT a.* FROM alarm_info a
+	LEFT JOIN device_info b ON b.dynamic_id = a.dynamic_id
+ 	where 1 = 1
+		${ew.sqlSegment}
+	</select>
+
+	<select id="getCount" resultType="java.lang.Integer" parameterType="map">
+		SELECT count(1) FROM alarm_info a
+		LEFT JOIN control_machine b on b.device_code = a.device_code and b.machine_no = a.condensing_device_num
+ 		where 1=1
+		${ew.sqlSegment}
+</select>
+
+	 <select id="selectRelationById" resultMap="BaseResultMap" parameterType="java.lang.String">
+        SELECT * FROM alarm_info
+		WHERE id = #{id,jdbcType=CHAR}
+
+	</select>
+
+
+	  <select id="selectRelationPageAlarmList" resultMap="BaseResultMap">
+	   SELECT a.*, c.factor_name, b.machine_name, b.id as machine_id FROM alarm_info a left join control_machine b on b.device_code = a.device_code and b.machine_no = a.condensing_device_num left join monitor_factor_template c on c.device_code = a.device_code and c.machine_id = b.id and c.factor_code = a.factor_code
+		 where 1=1
+		${ew.sqlSegment}
+	</select>
+
+	 <select id="selectRelationAlarmList" resultMap="BaseResultMap">
+		 SELECT a.*, c.factor_name, b.machine_name, b.id as machine_id FROM alarm_info a left join control_machine b on b.device_code = a.device_code and b.machine_no = a.condensing_device_num left join monitor_factor_template c on c.device_code = a.device_code and c.machine_id = b.id and c.factor_code = a.factor_code
+		 where 1=1
+		${ew.sqlSegment}
+	</select>
+</mapper>

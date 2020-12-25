@@ -1,0 +1,2 @@
+ALTER TABLE inspection_maintain_item_result add column `schedule_id` VARCHAR(32) NOT NULL DEFAULT '' COMMENT '排班id';
+ALTER TABLE inspection_maintain_class add column `index_num` int(2)  DEFAULT NULL COMMENT '分类排序';

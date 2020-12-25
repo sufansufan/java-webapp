@@ -1,0 +1,1 @@
+ALTER TABLE exception ADD `machine_id` VARCHAR(32) NOT NULL DEFAULT '' COMMENT '设备id';

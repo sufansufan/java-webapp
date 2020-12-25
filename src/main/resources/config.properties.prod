@@ -1,0 +1,14 @@
+#都客梦正式服务器
+jdbc_url=jdbc:mysql://127.0.0.1:3307/iot_test?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull
+jdbc_username=root
+jdbc_password=root
+
+#超管 密码=SM3(密码+user_salt) 初始默认:61DF24C67D8E0CC60A8A32C47B346D3370286988E691B0F06C2CF35388CA7D14
+super_admin=admin
+#测试服务器密码
+super_pwd=D2DB12BC958D4E5B059F8CB8DD15ECD7DA97FBE72536F13D51AE8F1FE177F922
+
+mqtt_host=tcp://127.0.0.1:1883
+mqtt_topic=upload
+mqtt_user=admin
+mqtt_pass=hivemq

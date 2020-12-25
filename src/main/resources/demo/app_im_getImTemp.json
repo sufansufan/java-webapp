@@ -1,0 +1,29 @@
+{
+	"machineName" : "螺杆空气压缩机",
+	"machineType": "螺杆空气压缩机_VS37A-H",
+	"machineType":"VS37-DADF",
+	"location":"车间A",
+	"itemCount": 4,
+	"imItems": [
+		{
+			"imClass" : "吊车",
+			"imClassId" : "11234",
+			"imItem" : "项目A",
+			"imClassId" : "11234",
+			"imMethod" : "测试方法",
+			"imStandard" : "判断标准判断标准判断标准判断标准",
+			"imProcessImgUrl" : "http://ceshi.jsp,http://ceshi.jsp,http://ceshi.jsp",
+			"hasNoChack" : true
+		},
+		{
+			"imClass" : "吊车",
+			"imClassId" : "11234",
+			"imItem" : "项目A",
+			"imClassId" : "11234",
+			"imMethod" : "测试方法",
+			"imStandard" : "判断标准判断标准判断标准判断标准",
+			"imProcessImgUrl" : "http://ceshi.jsp,http://ceshi.jsp,http://ceshi.jsp",
+			"hasNoChack" : false
+		}
+	]
+}

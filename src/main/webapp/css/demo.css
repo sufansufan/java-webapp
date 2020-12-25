@@ -1,0 +1,377 @@
+html, body, #container {
+            height: 100%;
+            width: 100%;
+        }
+
+        .input-card{
+            width: 26rem;
+        }
+
+        .input-card .btn{
+            margin-right: .9rem;
+        }
+
+        .input-card .btn:last-child{
+            margin-right: 0;
+        }
+        .content-card {
+            top: 15px;
+            right: 1rem;
+            height: calc(100% - 30px);
+            word-wrap: break-word;
+            background-color: #fff;
+            /*background-clip: border-box;;*/
+            border-radius: .25rem;
+            width: 30rem;
+            border-width: 0;
+            border-radius: 0.4rem;
+            box-shadow: 0 2px 6px 0 rgba(114, 124, 245, .5);
+            padding: 0.75rem 1.25rem;
+        }
+        .title-item {
+            border-bottom: 1px solid #029662;
+
+        }
+        .title-item a{
+            color: #fff;
+            padding: 0 15px;
+            height: 32px;
+            line-height: 32px;
+            display: table-cell;
+            text-decoration: none;
+            text-align: center;
+            background-color: #029662;
+            font-size: 14px;
+            margin:0;
+            transform: translateY(1px);
+        }
+        .hero-item {
+            height: 150px;
+            background-color: #E1EFCC;
+            
+        }
+        .cover-per {
+            color: #029662;
+            /*text-align: center;*/
+            height: calc(100% - 50px)
+        }
+        .cover-amount{
+            height: 50px;
+            width: 100%;
+            background-color: rgba(0,0,0,0.3); 
+            position: absolute;
+            bottom: 0;
+        }
+
+
+        table{
+            border-collapse: collapse;
+            border-spacing: 0;
+            width: 100%;
+            text-align: center;
+        }
+        td, th {
+            padding: 0;
+        }
+        table th:first-child {
+             white-space: nowrap; 
+        }
+        table td,  table th {
+            border: 1px solid #d9dbdb;
+            padding: 6px 5px;
+            word-break: break-all;
+            text-align: center !important;
+
+        }
+
+        .layui-laypage a, .layui-laypage span {
+            height: 26px;
+            line-height: 26px;
+            margin-bottom: 10px;
+            background: 0 0;
+        }
+        .layui-laypage a, .layui-laypage span.layui-laypage-curr {
+            padding: 0 12px;
+        }
+
+        .amap-marker-label{
+            border: 0;
+            background-color: transparent;
+        }
+
+
+        .content-window-card {
+            position: relative;
+            box-shadow: none;
+            bottom: 0;
+            left: 0;
+            width: auto;
+            padding: 0;
+        }
+
+        .content-window-card p {
+            height: 2rem;
+        }
+
+        .custom-info {
+            border: solid 1px silver;
+        }
+
+        div.info-top {
+            position: relative;
+            background: none repeat scroll 0 0 #F9F9F9;
+            border-bottom: 1px solid #CCC;
+            border-radius: 5px 5px 0 0;
+        }
+
+        div.info-top div {
+            display: inline-block;
+            color: #333333;
+            font-size: 14px;
+            font-weight: bold;
+            line-height: 31px;
+            padding: 0 10px;
+        }
+
+        div.info-top img {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            transition-duration: 0.25s;
+        }
+
+        div.info-top img:hover {
+            box-shadow: 0px 0px 5px #000;
+        }
+
+        div.info-middle {
+            font-size: 12px;
+            padding: 10px 6px;
+            line-height: 20px;
+        }
+
+        div.info-bottom {
+            height: 0px;
+            width: 100%;
+            clear: both;
+            text-align: center;
+        }
+
+        div.info-bottom img {
+            position: relative;
+            z-index: 104;
+        }
+
+        /*span {
+            margin-left: 5px;
+            font-size: 11px;
+        }*/
+
+        .info-middle img {
+            float: right;
+            width: 120px;
+            margin-right: 6px;
+        }
+
+        a.a-button{
+            /*color: #009cf9;*/
+            background-color: #fff;
+            border-radius:0.25rem; 
+        }
+        .a-button-sm {
+            height: 30px;
+            line-height: 30px;
+            padding: 5px 8px;
+            font-size: 12px;
+        }
+        a.a-button:hover{
+            color: #0a5aa0;
+            background-color: #f0f0f0;
+        }
+        a.a-button:active{
+            opacity: 0.8
+        }
+
+
+        .add-radius{
+            border-radius: 3px;
+        }
+
+        /*TrackReplay  TODO*/
+#TrackReplay .panel-body {
+    background:#fff;
+    padding: 0;
+    /*border: 1px solid #EAEAEA;*/
+    /*box-shadow: 1px 1px 1px rgba(220,220,220,.5);*/
+    /*box-shadow: 1px 1px 5px rgba(0,0,0,.2);*/
+    color: #333;
+    font-size: 13.5px;
+}
+#TrackReplay .panel-body .searchInfo {
+    background: #F2F7FB;
+    line-height: 34px;
+    border-bottom: 1px solid #dfdfdf;
+}
+#TrackReplay .panel-body .searchInfo>span {
+    display: inline-block;
+    padding: 0 20px;
+    border-right: 1px solid #dfdfdf;
+}
+#TrackReplay .panel-body .trackInfo>span {
+    line-height: 34px;
+}
+#TrackReplay .panel-body .trackInfo>span {
+    display: inline-block;
+    padding: 0 20px;
+}
+
+#TrackReplay .trackReplySearchDiv{
+    position: absolute;
+    top:0;
+    left:0;
+    width: 100%;
+    /*box-shadow: 1px 1px 1px rgba(220,220,220,.5);*/
+}
+
+#TrackReplay  .trackReplySearchDiv .row{
+    margin: 5px !important;
+}
+
+#TrackReplay .vertDevide {
+    border-left: 1px dotted #72829E;
+    margin: 2px 5px;
+}
+#TrackReplay .playOperate {
+    /*padding: 5px;*/
+    /*border-bottom: 1px solid #ddd;*/
+    /*height: 50px;*/
+    /*background: #fff;*/
+    /*display: inline-block;*/
+}
+
+#Track_mapDiv,.trackReplySearchDiv {
+    -moz-user-select: none; -khtml-user-select: none; user-select: none;
+}
+
+input.riqi {
+    /* padding-right: 80px; */
+    background: url(./images/map/boatmap/riqi.png) no-repeat scroll right 4px center transparent;
+    padding: 5px 10px;
+    right: 10px;
+    width: 130px;
+    background-size: 23px;
+    font-size: 13.5px;
+}
+
+#TrackReplay .playOperate li {
+    display: inline-block;
+}
+#TrackReplay .button {
+    padding: 5px 8px;
+    border: none;
+}
+.button.bg-main {
+    background-color: #009688;
+    border-color: #009688;
+    color: #fff;
+    opacity: 0.9;
+}
+.button.bg-main:hover {
+    opacity: 0.8;
+}
+.button.bg-main:active {
+    opacity: 1;
+}
+#TrackReplay .playOperate .button {
+    background-color: #fff
+}
+#TrackReplay .playOperate .date-picker .button {
+    color: #666;
+}
+#TrackReplay .playOperate .date-picker .button.active {
+    background-color: transparent;
+    color: #3498db;
+}
+#TrackReplay .playOperate .button span {
+    display: inline-block;
+    line-height: 24px;
+    /*padding: 0 4px;*/
+    border-radius: 4px;
+}
+#TrackReplay .playOperate .btnXX span {
+    padding: 0 4px;
+}
+
+#TrackReplay .playOperate .button span:hover {
+    background-color: #f0f0f0 ;
+}
+#TrackReplay .playOperate .button span.active {
+    background-color: #5FB878 ;
+    color: #fff;
+}
+#TrackReplay .trackOperate {
+    position: absolute;
+    bottom: 80px;
+    left: 280px;
+    background: #fff;
+    border-bottom: 1px solid #ddd;
+    height: 40px;
+    padding: 5px;
+    border-left: 5px solid #3498db;
+}
+#TrackReplay .trackSlider {
+    position: absolute;
+    bottom: 30px;
+    left: 280px;
+    background-color: #fff
+}
+#TrackReplay .trackSliderDiv {
+    /*display: inline-block;*/
+    width: 800px;
+    height: 50px;
+    /*background: #fff;*/
+    padding: 20px;
+}
+#TrackReplay .trackSliderDiv .track-slider{
+    background: #ddd;
+}
+#TrackReplay .ui-slider.ui-widget-content {
+    background: #ddd;
+    height: 8px;
+    border-radius: 4px;
+}
+#TrackReplay .ui-slider .ui-slider-range-min {
+    border-radius: 4px;
+}
+
+#TrackReplay .ui-slider-horizontal .ui-slider-range-min {
+    background: #009CF9;
+}
+
+#TrackReplay #track-slider .ui-slider-handle.ui-state-default {
+    background:#fff url(./images/map/boatmap/button.png) 0 0/18px 18px !important;
+    width: 18px;
+    height: 18px;
+    border: none;
+    top: -5px;
+    border-radius: 50%;
+    outline: none;
+    cursor: pointer;
+}
+
+#TrackReplay .ui-widget-content {
+    border:none
+}
+#TrackReplay .playBtn>i:before {
+    content: "\f144";
+}
+#TrackReplay .playBtn.playing>i:before {
+    content: "\f28b";
+}
+.selectContent {
+    position: absolute;
+    border: 1px solid rgba(0,0,0,.15);
+    /* border-radius: 4px; */
+    /* -webkit-box-shadow: 0 0px 6px rgba(0,0,0,.175); */
+    /* box-shadow: 0 0px 6px rgba(0,0,0,.175); */
+}

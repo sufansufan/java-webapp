@@ -1,0 +1,1 @@
+ALTER TABLE inspection_maintain_item_result add column `task_id` VARCHAR(32) NOT NULL DEFAULT '' COMMENT '任务id';

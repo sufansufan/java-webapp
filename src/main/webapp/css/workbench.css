@@ -1,0 +1,220 @@
+*{
+    box-sizing:border-box;
+
+}
+body, html,#allmap {
+    width: 100%;height: 100%;overflow: hidden;margin:0;
+    font-family:"微软雅黑";
+    /* 12px/1.3 Arial,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","WenQuanYi Micro Hei",sans-serif */
+}
+.page{
+    background-image: url(./images/workbench/backimage.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    overflow: auto
+}
+.grid-row-head {
+    position: relative;
+    top:0px;
+    left: 0;
+    height: 45px;
+
+}
+.head-back-image {
+    width: 100%;
+    margin: 0 auto;
+    height: 100%;
+    background-image: url(./images/workbench/headbar.png);
+    background-size: 100% 100%;
+}
+.grid-row-body {
+    position: relative;
+    height: calc(100% - 45px);
+    font-size: 0;
+}
+.grid-row-1 {
+    height: 35%;
+    padding: 0 10px;
+    min-height: 200px;
+}
+.grid-row-c1 {
+    width: calc(60% - 8px);
+    height: 100%;
+    padding: 0 7px;
+    display: inline-block;
+    background-color: rgba(9, 37, 75, 0.76)
+}
+.grid-row-c2 {
+    width: calc(40% - 7px);
+    padding: 0 7px;
+    height: 100%;
+    display: inline-block;
+    background-color: rgba(9, 37, 75, 0.76);
+}
+.grid-row-2 {
+    height: 70%;
+    min-height: 380px;
+    margin:15px 10px;
+    padding: 0 7px;
+    background-color: rgba(9, 37, 75, 0.76)
+}
+.grid-row-r1{
+    height: 50px;
+}
+.row-r1-title {
+    background-image: url(./images/workbench/titleback.png);
+    background-size: 100% 110%;
+    background-repeat:no-repeat;
+}
+.row-r1-title:first-child {
+    line-height: 50px;
+    font-size: 16px;
+}
+
+.grid-row-r2{
+    height: calc(100% - 50px);
+}
+.grid-c1{
+    display:inline-block;
+    width: 33.3%;
+    height: 100%;
+}
+.grid-c2{
+    display:inline-block;
+    width: 50%;
+    height: 100%;
+}
+.grid-1{
+    display:inline-block;
+    width: 20%;
+    height: 100%;
+}
+.grid-2{
+    display:inline-block;
+    width: 25%;
+    height: 100%;
+}
+.grid{
+    font-size: 14px;
+    vertical-align: middle;
+}
+.grid.wraper{
+    /* padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px; */
+    padding: 12px 7px;
+}
+.grid-inbox {
+    background-color: rgba(255, 255, 255, 0.05);
+    height: 100%;
+}
+.grid-head-title{
+    /* padding-top:5px;
+    padding-bottom:5px;  */
+    line-height: 30px;
+    text-align: center;
+    /* color: #00FEFE; */
+    color:rgb(42, 149, 250);
+}
+.title-color, .main-color {
+    /*color:rgb(42, 149, 250);*/
+    color:rgb(121, 187, 250);
+}
+.grid-body{
+    height: calc(100% - 30px);
+}
+.grid-chart {
+    height: calc(100% - 40px);
+    position: relative;
+}
+.grid-bottom-info{
+    text-align: center;
+}
+.target>a{
+    color: #ccc;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 3px 5px ;
+    font-size: 12px;
+}
+a.lable{
+    padding: 1px 8px;
+    border-radius: 2px;
+    color: #fff;
+}
+a.lable-ok {
+    background: linear-gradient(to top, #4C750C, rgb(117, 170, 19))
+}
+a.lable-alarm {
+    background-color: #E97629
+}
+
+.circle{
+    border-radius:50%;
+}
+.circle-box {
+    border-radius:50%;
+    /* box-shadow: 5px 5px 0 rgba(255,255,255,0.2); */
+    background-color: #930008;
+}
+.lh-full{
+    line-height: 100%
+}
+.ring-glass{
+    background-color: rgba(255,255,255,0.05);
+    border-radius:50%;
+    padding: 5px;
+}
+.scale-1:hover{
+    transform: scale(1.1);
+}
+.squ-30{
+    width: 30px;
+    height:30px;
+}
+.squ-40{
+    width: 40px;
+    height:40px;
+}
+.squ-60{
+    width: 60px;
+    height:60px;
+}
+.squ-80{
+    width: 80px;
+    height:80px;
+}
+.squ-100{
+    width: 100px;
+    height:100px;
+}
+.squ-pc{
+    width: 50%;
+    height:50%;
+}
+.tran-fade {
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    -ms-transition: all 0.5s;
+    transition: all 0.5s;
+}
+
+.sand-boat{
+    background:url(./images/workbench/boat.png) 0 0/100% 100%
+}
+.noise-icon{
+    background:url(./images/workbench/noise.png) 0 0/100% 100%;
+}
+.disaster-icon {
+    background:url(./images/workbench/disaster.png) 0 0/100% 100%
+}
+
+.label-arrow {
+    top: 0px;
+    left: -25px;
+    position: absolute;
+    border-top: 10px solid transparent;
+    border-right: 15px solid #66CE80;
+    border-bottom: 10px solid transparent;
+    border-left: 15px solid transparent;
+}

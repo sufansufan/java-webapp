@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ics.dataDesources.mapper.MachineMapper">
+
+    <select id="selectMachinePageList" resultType="com.ics.dataDesources.model.ControlMachine">
+    SELECT
+    	cm.id id,
+    	cm.machine_no machineNo,
+    	cm.machine_name machineName,
+    	ei.enterprise_name enterpriseName,
+    	cm.machine_type machineType,
+    	sdi.item_name machineTypeName,
+    	cm.machine_model machineModel,
+    	cm.remote_monitor_flag remoteMonitorFlag,
+    	di.device_name deviceName,
+    	cm.check_flag checkFlag,
+    	cm.maintain_flag maintainFlag,
+    	cm.remark remark,
+    	cm.manufacotry manufacotry,
+    	cm.location location,
+    	cm.online_status onlineStatus,
+		so.org_name orgName
+    FROM control_machine cm
+	LEFT JOIN enterprise_info ei ON cm.enterprise_id=ei.id
+	LEFT JOIN device_info di ON cm.device_code=di.device_code
+	LEFT JOIN sys_org so ON so.id=cm.org_id
+	LEFT JOIN sys_dictionary sd on sd.dict_code = 'machineType'
+	LEFT JOIN sys_dictionary_item sdi on sdi.dict_id = sd.id and sdi.item_value = cm.machine_type
+	WHERE 1=1
+    ${ew.sqlSegment}
+	</select>
+
+	<select id="selectTeamList" resultType="com.ics.dataDesources.model.Team">
+    SELECT
+    	t.id id,
+    	t.org_id orgId,
+    	so.org_name orgName,
+    	t.name name
+    FROM sys_team t left join sys_org so on t.org_id=so.id
+	WHERE 1=1
+    ${ew.sqlSegment}
+	</select>
+
+    <select id="selectMachineList" resultType="com.ics.dataDesources.model.ControlMachine">
+	    SELECT  a.id as id,a.device_code as deviceCode,a.enterprise_id as enterpriseId,a.template_id as templateId,a.machine_no as condensingDeviceNum,
+	    a.machine_name as condensingDeviceName,a.alarm_status as alarmState,a.power_status as switchState,a.runtime as runtime ,a.device_type as deviceType,a.machine_model as deviceModel,a.photo_path as photoPath,
+	    a.remark as remark,a.create_time as createTime,a.modify_time as modifyTime,b.enterprise_name as enterpriseName, a.running_status as runningStatus
+	    from control_machine a
+	    left join enterprise_info b on a.enterprise_id = b.id
+		WHERE 1=1
+		${ew.sqlSegment}
+
+	</select>
+
+    <select id="selectMachineOrgList" resultType="com.ics.system.model.SysOrg">
+	    SELECT
+	    	distinct
+			cm.org_id id,
+			so.org_name orgName
+		FROM
+			control_machine cm,sys_org so
+		where so.id = cm.org_id
+	</select>
+
+</mapper>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ics.dataDesources.mapper.CondensingDeviceMapper">
+
+	<select id="selectRelationPageList" resultType="com.ics.dataDesources.model.CondensingDevice">
+	    SELECT  a.id as id,a.device_code as deviceCode,a.enterprise_id as enterpriseId,a.template_id as templateId,a.machine_no as condensingDeviceNum,
+	    a.machine_name as condensingDeviceName,a.alarm_status as alarmState,a.power_status as switchState,a.runtime as runtime ,a.machine_type as machineType,a.machine_model as deviceModel,a.photo_path as photoPath,
+	    a.remark as remark,a.create_time as createTime,a.modify_time as modifyTime,b.enterprise_name as enterpriseName,
+	    a.running_status as runningStatus
+	    from control_machine a
+	    left join enterprise_info b on a.enterprise_id = b.id
+		WHERE 1=1
+		${ew.sqlSegment}
+			
+	</select>
+	
+	<select id="selectRelationList" resultType="com.ics.dataDesources.model.CondensingDevice">
+	    SELECT  a.id as id,a.device_code as deviceCode,a.enterprise_id as enterpriseId,a.template_id as templateId,a.machine_no as condensingDeviceNum,
+	    a.machine_name as condensingDeviceName,a.alarm_status as alarmState,a.power_status as switchState,a.runtime as runtime ,a.machine_type as machineType,a.machine_model as deviceModel,a.photo_path as photoPath,
+	    a.remark as remark,a.create_time as createTime,a.modify_time as modifyTime,b.enterprise_name as enterpriseName, a.running_status as runningStatus
+	    from control_machine a
+	    left join enterprise_info b on a.enterprise_id = b.id
+		WHERE 1=1
+		${ew.sqlSegment}
+			
+	</select>
+
+</mapper>

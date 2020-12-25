@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ics.remoteMonitor.mapper.MaintenanceRecordMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.ics.remoteMonitor.model.MaintenanceRecord">
+		<id column="id" property="id" />
+		<result column="device_code" property="deviceCode" />
+		<result column="condensing_device_num" property="condensingDeviceNum" />
+		<result column="maintenance_time" property="maintenanceTime" />
+		<result column="maintenance_content" property="maintenanceContent" />
+		<result column="maintenance_duration" property="maintenanceDuration" />
+		<result column="remark" property="remark" />
+		<result column="create_time" property="createTime" />
+		<result column="modify_time" property="modifyTime" />
+		
+		<result column="enterprise_name" property="enterpriseName" />
+	</resultMap>
+
+    
+    <select id="selectRelationPageList" resultMap="BaseResultMap">
+	    SELECT a.*,b.enterprise_name FROM maintenance_record a,enterprise_info b where 
+        a.device_code=b.device_code
+		${ew.sqlSegment}		
+	</select>
+	
+	  <select id="selectRelationList" resultMap="BaseResultMap">
+	    SELECT a.*,b.enterprise_name FROM maintenance_record a,enterprise_info b where 
+        a.device_code=b.device_code
+		${ew.sqlSegment}
+			
+	</select>
+	
+	 <select id="selectRelationById" resultMap="BaseResultMap" parameterType="java.lang.String">
+        SELECT * FROM maintenance_record
+		WHERE id = #{id,jdbcType=CHAR}
+			
+	</select>
+	
+</mapper>

@@ -1,0 +1,128 @@
+@charset "utf-8";
+/* CSS Document */
+body {
+	background: #eeeeee;
+	overflow-x: hidden;
+}
+
+.header {
+	height: 80px;
+	line-height: 80px;
+	/* background: #2559A4; */
+/* 	background: #22A3ED; */
+	background: #c00000;
+	z-index: 999;
+}
+
+.header .layui-nav{background: none !important;}
+
+.logo {
+	float: left;
+    padding: 0 10px 0 30px;
+    height: 80px;
+    line-height: 80px;
+}
+
+.logo-desc {
+	float: left;
+	color: #FFF;
+	font-size: 25px;
+	font-weight: 700;
+	font-family: '微软雅黑';
+	padding-left: 0;
+	min-width: 135px;
+	padding-right: 80px;
+}
+
+.ics-header{
+    float: left;
+    position: unset !important;
+    height: 80px;
+    min-width: 580px;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+.ics-header-left,.ics-header-right{
+    width: 65px;
+    float: left;
+    height: 80px;
+    text-align: center;
+}
+
+.ics-header-left-img,.ics-header-right-img{
+	display:none;
+}
+
+.ics-header .ics-header-item{
+	float:left;
+	width:116px;
+    height: 80px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.ics-header .ics-header-item:hover{
+/* 	background: url(images/header/nav_icon_sel_bg.png) no-repeat */
+	background: linear-gradient(to top,#e90000,#8f1f1f)
+}
+
+/* .ics-header .ics-header-item:after{content:'';position:absolute;left:0;right:0;top:0;bottom:0;background:url(images/header/nav_icon_sel_bg.png);opacity:0;transition:.5s;}
+.ics-header .ics-header-item:hover:after{opacity:1;} */
+
+.ics-header .ics-header-item.sell{
+/* 	background: url(images/header/nav_icon_sel_bg.png) no-repeat */
+	background: linear-gradient(to top,#e90000,#8f1f1f)
+}
+
+.ics-header-item-img{
+	width: 100%;
+    height: 60px;
+    line-height: 55px;
+}
+.ics-header-item-img img{
+	width: 46px;
+}
+.ics-header-item-text{
+    width: 100%;
+    height: 40px;
+    line-height: 25px;
+    font-size: 16px;
+    color: #FFF;
+}
+
+.ics-header .layui-nav-item {
+    line-height: 50px !important;
+}
+.ics-header .layui-nav-item a img{
+    height: 18px;
+    margin: 0 6px 4px 0;
+}
+
+.layui-nav-child {
+    top: 82px;
+    z-index: 9999999999999;
+    box-shadow: 0 2px 4px rgba(0,0,0,.12);
+    border: 1px solid #c00000;
+     background-color: #c00000
+}
+
+.layui-nav .layui-nav-child a{
+	line-height:50px !important;
+	height:50px !important;
+}
+
+.layui-nav .layui-nav-child a:hover {
+    background-color: #44b0ec;
+    color: #fff;
+}
+
+.layui-nav .layui-nav-item{
+    line-height: 80px;
+}
+
+.layui-nav .layui-nav-item a{
+    color: #fff;
+    height: 80px;
+    line-height: 80px;
+}

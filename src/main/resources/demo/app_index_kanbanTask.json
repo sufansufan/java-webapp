@@ -1,0 +1,72 @@
+{
+	"taskId": "adfadf",
+	"machineName": "螺杆空气压缩机",
+	"machineType": "螺杆空气压缩机_VS37A-H",
+	"location": "车间A",
+	"imClass": [
+		{
+			"imClassName": "吊车",
+			"imClassId": "asdfad",
+			"finishCount": 1,
+			"itemTotalCount": 2,
+			"imItems": {
+				"imItemIndex": 1,
+				"date": "2020-09-30",
+				"type": "当天",
+				"details" : [
+					{
+						"orgName" : "XXX管理部门",
+						"teamName" : "保养一组",
+						"orgCode" : "001",
+						"orgCode" : "002",
+						"detail": [
+							{
+								"typeCode" : "D",
+								"typeName" : "日常点检",
+								"totalCount":"63",
+								"unfinishedRate":"50%",
+								"unfinishedCount": 31,
+								"completedRate":"50%",
+								"completedCount":31
+							},
+							{
+								"type" : "R",
+								"typeName" : "定期点检",
+								"totalCount":"63",
+								"unfinishedRate":"50%",
+								"unfinishedCount": 31,
+								"completedRate":"50%",
+								"completedCount":31
+							},
+							{
+								"type" : "M",
+								"typeName" : "保养",
+								"totalCount":"63",
+								"unfinishedRate":"50%",
+								"unfinishedCount": 31,
+								"completedRate":"50%",
+								"completedCount":31
+							},
+							{
+								"type" : "E",
+								"typeName" : "异常",
+								"totalCount":"63",
+								"unfinishedRate":"50%",
+								"unfinishedCount": 31,
+								"completedRate":"50%",
+								"completedCount":31
+							}
+
+						]
+
+					}
+
+				]
+			},
+			"teamCode": "adsfasd",
+			"imItemName": "项目a",
+			"result": "success",
+			"machineData": "33.4"
+		}
+	]
+}

@@ -1,0 +1,2 @@
+ALTER TABLE inspection_maintain_item_result add column `type` VARCHAR(32) NOT NULL DEFAULT '' COMMENT '类型（日常点检-D， 定期点检-R, 日常保养-M）';
+ALTER TABLE task add column `machine_id` VARCHAR(32) NOT NULL DEFAULT '' COMMENT '设备id';

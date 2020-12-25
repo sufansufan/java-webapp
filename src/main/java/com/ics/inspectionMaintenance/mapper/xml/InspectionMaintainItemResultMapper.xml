@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ics.inspectionMaintenance.mapper.InspectionMaintainItemResultMapper">
+    <select id="getItemResultsByScheduleIds" resultType="com.ics.inspectionMaintenance.model.InspectionMaintainItemResult">
+   select t.id, t.execute_date as executeDate, t.result, t.`desc`, t.result_img_urls as resultImgUrls, t.machine_id as machineId,
+ t.machine_item_id as machineItemId, t.create_time as createTime, t.modify_time as modifyTime, t.schedule_id as scheduleId, t.type from inspection_maintain_item_result t
+	WHERE 1=1
+    ${ew.sqlSegment}
+	</select>
+
+    <select id="selectImResultByTaskInfo" resultType="com.ics.inspectionMaintenance.model.ImResultForCount">
+       select ir.result,t.start_time as scheduleDate, t.id as taskId
+       from inspection_maintain_item_result ir
+        inner join task t on ir.task_id = t.id
+        WHERE 1=1
+        ${ew.sqlSegment}
+	</select>
+</mapper>
